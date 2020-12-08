@@ -1,0 +1,388 @@
+
+*{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    
+}
+input:focus{
+    outline: none;
+}
+
+button:focus{
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.night {
+    background-color: #110038;
+    transition: background 0.3s ease;
+
+}
+
+.topBar {
+    width: auto;
+    height: 23px;
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+    font-family: 'Chakra Petch', sans-serif;
+    color: #FFFF;
+    font-size: 12px;
+    justify-content: space-between;
+    
+}
+
+.title{
+    box-shadow: 0 1px 0 0 #110038;
+    font-weight: 300;
+    margin: 1.5px;
+}
+
+.topBar p{
+padding: 3px 0 0 5px
+
+}
+
+.night .topBar{
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+.content{
+    margin-left: 8%;
+    margin-right: 10%;
+}
+
+
+#logo{
+    width: 8%;
+    height: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 4% 0%;
+}
+
+nav > div{
+    display: flex;
+}
+
+/* Botones principales del index */
+
+
+.buttons a{
+    display: flex;
+    margin-left: 13px;
+}
+
+.button-primary{
+    
+    background: #F7C9F3;
+    border: 1px solid #110038;
+    box-shadow: inset -1.5px -1.5px 0 0 #997D97, inset 1.5px 1.5px 0 0 #FFFFFF;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    height: 26px;
+    padding: 6px 26px 0 26px;
+
+    
+}
+
+.buttons .button-primary:nth-last-of-type(1)  {
+    margin-left: 0px;
+    margin-right: 16px;
+    padding: 6px 15px 0 15px;
+    background-image: url(/assets/dropdown.svg);
+    background-repeat: no-repeat; 
+    background-position: center center;
+    border-left: 0px;
+
+}
+
+.buttons:hover .button-primary,
+.button-primary:hover{
+    background-color: #E6BBE2;
+    outline: 1px dotted  #110038;
+    outline-offset:-4px;
+}
+
+.myGifos {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 16px;
+    color: #110038;     
+    padding-top: 7px;
+    height: 24px;
+    width: 80px;
+}
+
+.myGifos::first-letter{
+    border-bottom: 1px solid #110038;
+    border-bottom-width: 0.01px;
+}
+
+.myGifos:hover{
+    outline: 1px dotted #110038;
+
+}
+.myGifos:active {
+    color: hsl(258, 100%, 82%);
+    outline: 0px;
+}
+
+.myGifos:active::first-letter{
+    border-bottom: 1px solid  hsl(258, 100%, 82%);
+}
+
+.night .button-primary{
+    background: #EE3EFE;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+    color: #FFFFFF;
+
+
+}
+
+.night .buttons .button-primary:last-child{
+    background-image: url(/assets/dropdownnight.svg);
+}
+
+.night .myGifos{
+    color: #FFFFFF;;
+ 
+}
+.night .myGifos::first-letter{
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.night .buttons:hover .button-primary, 
+.night .button-primary:hover{
+    background-color: #CE36DB;
+}
+
+.night .myGifos:hover{
+    outline: 1px dotted #FFFFFF;
+}
+.night .myGifos:hover{
+    outline: 1px dotted #FFFFFF;
+}
+.night .myGifos:active {
+    color:hsl(0, 0%, 61%);
+    outline: 0px;
+}
+
+.night .myGifos:active::first-letter{
+    border-bottom: 1px solid hsl(0, 0%, 61%);;
+}
+
+
+.dropdown{
+    position: absolute;
+    width: 168px;
+    height: 103px;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    margin-left: 13px;
+    z-index: 10;
+}
+
+.dropdown ul{
+    padding-top: 9px;
+}
+
+.dropdown li{
+    background: #F0F0F0;
+    border: 1px solid #808080;
+    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 16px;
+    color: #110038;
+    padding: 8px 0px;
+    margin-bottom: 6px;
+}
+
+.dropdown span {
+    padding-left: 10px;
+}
+
+.dropdown li:hover  {
+    cursor: pointer;
+    background: #FFF4FD;
+    border: 1px solid #CCA6C9;
+    box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.dropdown li:hover::first-letter{
+    border-bottom: 1px solid #110038;
+   
+}
+
+.night .dropdown{
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.night .dropdown li{
+    background: #CCCCCC;
+    border: 1px solid #808080;
+    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+
+}
+
+.night .dropdown li:hover  {
+    background: #2E32FB;
+    color: #FFFFFF;
+
+}
+
+.night .dropdown li:hover::first-letter{
+    border-bottom: 1px solid #FFFFFF;
+   
+}
+
+.box{
+    width: auto;
+    height: 90px;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;     
+    padding: 2px;
+}
+
+
+.font14{
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700; 
+    font-size: 14px;
+    line-height: 1.7;
+    padding-left: 3px;
+}
+.box > div{
+    display: flex;
+    align-items: center
+}
+.box input {
+    background: #FFFFFF;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    width: 85%;
+    height: 48px;
+    margin: 10px 8px 8px 12px;
+    font-family: 'Chakra Petch', sans-serif;
+    color: #110038;
+    font-size: 16px;
+    line-height: 22px;
+    padding-left: 10px;
+
+}
+.box input::placeholder{
+    color: #B4B4B4;
+}
+
+.box button{
+    cursor:pointer;
+    width: 11%;
+    height: 46px;
+    background: #E6E6E6;
+    border: 1px solid #808080;
+    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    
+}
+
+.submit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 16px;
+    color: #B4B4B4;
+    letter-spacing: 0;
+    line-height: 18px;
+    padding: 4px;
+}
+
+.lupa{
+    background-image: url(/assets/lupa_inactive.svg);
+    background-repeat: no-repeat; 
+    background-position: center center;
+    height: 20px;
+    width: 20px;
+
+}
+
+.night .box {
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;     
+}
+
+.night .box button{
+    background: #B4B4B4;
+}
+
+.night .submit{
+    color: #8F8F8F;
+
+}
+.night .lupa{
+    background-image: url(/assets/Combined\ Shape.svg);
+}
+
+.subtitle {
+    background: #FFFAFE;
+    border: 1px solid #E6BBE2;
+    box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+    margin-top: 64px;
+    margin-bottom: 16px;
+}
+
+.subtitle h2{
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #110038;
+    letter-spacing: 0;
+    padding: 7px;
+}
+
+.night .subtitle {  
+    border: 1px solid #2E32FB;
+    box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #110038;
+}
+
+.trend {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trending.box {
+    width: 23%;
+    margin-left: 2%;
+    height: auto;
+}
+
+.trending.box:nth-child(1) {
+    margin-left: 0px;
+}
+
+.trend .topBar{
+    margin: 0 1px;
+} 
+.trending .gif img {
+    padding-right: 3px;
+    width: 100%;
+    height: 100%;
+}
+
+.gif {
+    justify-content: center;
+    /* height: 241px; */
+    clip-path: inset(1% 1% 1% 1%);
+}
