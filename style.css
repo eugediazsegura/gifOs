@@ -1,15 +1,15 @@
-
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     list-style: none;
-    
+    transition: background 0.3s ease;
 }
-input:focus{
+
+input:focus {
     outline: none;
 }
 
-button:focus{
+button:focus {
     outline: none;
 }
 
@@ -20,7 +20,6 @@ a {
 .night {
     background-color: #110038;
     transition: background 0.3s ease;
-
 }
 
 .topBar {
@@ -31,30 +30,32 @@ a {
     color: #FFFF;
     font-size: 12px;
     justify-content: space-between;
-    
+
 }
 
-.title{
+.title {
     box-shadow: 0 1px 0 0 #110038;
     font-weight: 300;
     margin: 1.5px;
 }
 
-.topBar p{
-padding: 3px 0 0 5px
-
+.topBar p {
+    padding: 3px 0 0 5px
 }
 
-.night .topBar{
+.night .topBar {
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
-.content{
-    margin-left: 8%;
-    margin-right: 10%;
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 0 10%;
 }
 
 
-#logo{
+#logo {
     width: 8%;
     height: 100%;
 }
@@ -65,20 +66,20 @@ nav {
     padding: 4% 0%;
 }
 
-nav > div{
+nav>div {
     display: flex;
 }
 
 /* Botones principales del index */
 
 
-.buttons a{
+.buttons a {
     display: flex;
     margin-left: 13px;
 }
 
-.button-primary{
-    
+.button-primary {
+
     background: #F7C9F3;
     border: 1px solid #110038;
     box-shadow: inset -1.5px -1.5px 0 0 #997D97, inset 1.5px 1.5px 0 0 #FFFFFF;
@@ -92,55 +93,56 @@ nav > div{
     height: 26px;
     padding: 6px 26px 0 26px;
 
-    
+
 }
 
-.buttons .button-primary:nth-last-of-type(1)  {
+.buttons .button-primary:nth-last-of-type(1) {
     margin-left: 0px;
     margin-right: 16px;
     padding: 6px 15px 0 15px;
     background-image: url(/assets/dropdown.svg);
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-position: center center;
     border-left: 0px;
 
 }
 
 .buttons:hover .button-primary,
-.button-primary:hover{
+.button-primary:hover {
     background-color: #E6BBE2;
-    outline: 1px dotted  #110038;
-    outline-offset:-4px;
+    outline: 1px dotted #110038;
+    outline-offset: -4px;
 }
 
 .myGifos {
     font-family: 'Chakra Petch', sans-serif;
     font-size: 16px;
-    color: #110038;     
+    color: #110038;
     padding-top: 7px;
     height: 24px;
     width: 80px;
 }
 
-.myGifos::first-letter{
+.myGifos::first-letter {
     border-bottom: 1px solid #110038;
     border-bottom-width: 0.01px;
 }
 
-.myGifos:hover{
+.myGifos:hover {
     outline: 1px dotted #110038;
 
 }
+
 .myGifos:active {
     color: hsl(258, 100%, 82%);
     outline: 0px;
 }
 
-.myGifos:active::first-letter{
-    border-bottom: 1px solid  hsl(258, 100%, 82%);
+.myGifos:active::first-letter {
+    border-bottom: 1px solid hsl(258, 100%, 82%);
 }
 
-.night .button-primary{
+.night .button-primary {
     background: #EE3EFE;
     box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
     color: #FFFFFF;
@@ -148,40 +150,45 @@ nav > div{
 
 }
 
-.night .buttons .button-primary:last-child{
+.night .buttons .button-primary:last-child {
     background-image: url(/assets/dropdownnight.svg);
 }
 
-.night .myGifos{
-    color: #FFFFFF;;
- 
+.night .myGifos {
+    color: #FFFFFF;
+    ;
+
 }
-.night .myGifos::first-letter{
+
+.night .myGifos::first-letter {
     border-bottom: 1px solid #FFFFFF;
 }
 
-.night .buttons:hover .button-primary, 
-.night .button-primary:hover{
+.night .buttons:hover .button-primary,
+.night .button-primary:hover {
     background-color: #CE36DB;
 }
 
-.night .myGifos:hover{
+.night .myGifos:hover {
     outline: 1px dotted #FFFFFF;
 }
-.night .myGifos:hover{
+
+.night .myGifos:hover {
     outline: 1px dotted #FFFFFF;
 }
+
 .night .myGifos:active {
-    color:hsl(0, 0%, 61%);
+    color: hsl(0, 0%, 61%);
     outline: 0px;
 }
 
-.night .myGifos:active::first-letter{
-    border-bottom: 1px solid hsl(0, 0%, 61%);;
+.night .myGifos:active::first-letter {
+    border-bottom: 1px solid hsl(0, 0%, 61%);
+    ;
 }
 
 
-.dropdown{
+.dropdown {
     position: absolute;
     width: 168px;
     height: 103px;
@@ -191,11 +198,11 @@ nav > div{
     z-index: 10;
 }
 
-.dropdown ul{
+.dropdown ul {
     padding-top: 9px;
 }
 
-.dropdown li{
+.dropdown li {
     background: #F0F0F0;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
@@ -213,61 +220,63 @@ nav > div{
     padding-left: 10px;
 }
 
-.dropdown li:hover  {
+.dropdown li:hover {
     cursor: pointer;
     background: #FFF4FD;
     border: 1px solid #CCA6C9;
     box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
 }
 
-.dropdown li:hover::first-letter{
+.dropdown li:hover::first-letter {
     border-bottom: 1px solid #110038;
-   
+
 }
 
-.night .dropdown{
+.night .dropdown {
     background: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
 
-.night .dropdown li{
+.night .dropdown li {
     background: #CCCCCC;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
 
 }
 
-.night .dropdown li:hover  {
+.night .dropdown li:hover {
     background: #2E32FB;
     color: #FFFFFF;
 
 }
 
-.night .dropdown li:hover::first-letter{
+.night .dropdown li:hover::first-letter {
     border-bottom: 1px solid #FFFFFF;
-   
+
 }
 
-.box{
+.box {
     width: auto;
     height: 90px;
     background: #E6E6E6;
-    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;     
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     padding: 2px;
 }
 
 
-.font14{
+.font14 {
     font-family: 'Chakra Petch', sans-serif;
-    font-weight: 700; 
+    font-weight: 700;
     font-size: 14px;
     line-height: 1.7;
     padding-left: 3px;
 }
-.box > div{
+
+.box>div {
     display: flex;
     align-items: center
 }
+
 .box input {
     background: #FFFFFF;
     border: 1px solid #979797;
@@ -282,21 +291,22 @@ nav > div{
     padding-left: 10px;
 
 }
-.box input::placeholder{
+
+.box input::placeholder {
     color: #B4B4B4;
 }
 
-.box button{
-    cursor:pointer;
+.box button {
+    cursor: pointer;
     width: 11%;
     height: 46px;
     background: #E6E6E6;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    
+
 }
 
-.submit{
+.submit {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -309,9 +319,9 @@ nav > div{
     padding: 4px;
 }
 
-.lupa{
+.lupa {
     background-image: url(/assets/lupa_inactive.svg);
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-position: center center;
     height: 20px;
     width: 20px;
@@ -320,18 +330,19 @@ nav > div{
 
 .night .box {
     background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;     
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
 
-.night .box button{
+.night .box button {
     background: #B4B4B4;
 }
 
-.night .submit{
+.night .submit {
     color: #8F8F8F;
 
 }
-.night .lupa{
+
+.night .lupa {
     background-image: url(/assets/Combined\ Shape.svg);
 }
 
@@ -343,7 +354,7 @@ nav > div{
     margin-bottom: 16px;
 }
 
-.subtitle h2{
+.subtitle h2 {
     font-family: 'Chakra Petch', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -352,7 +363,7 @@ nav > div{
     padding: 7px;
 }
 
-.night .subtitle {  
+.night .subtitle {
     border: 1px solid #2E32FB;
     box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #110038;
 }
@@ -362,27 +373,112 @@ nav > div{
     justify-content: space-between;
 }
 
-.trending.box {
+.suggestions.box {
     width: 23%;
     margin-left: 2%;
     height: auto;
 }
 
-.trending.box:nth-child(1) {
+.suggestions.box:nth-child(1) {
     margin-left: 0px;
 }
 
-.trend .topBar{
+.trend .topBar {
     margin: 0 1px;
-} 
-.trending .gif img {
+}
+
+.suggestions .gif img {
     padding-right: 3px;
-    width: 100%;
-    height: 100%;
+    height: 280px;
 }
 
 .gif {
     justify-content: center;
-    /* height: 241px; */
+    height: 241px;
     clip-path: inset(1% 1% 1% 1%);
+}
+
+.viewmore {
+    background: #4180F6;
+    border: 1px solid #4C2F99;
+    box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+    position: absolute;
+    margin-top: -3%;
+    margin-left: 9px;
+}
+
+.viewmore a {
+
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px 10px;
+}
+
+.viewmore:hover {
+    background: #3A72DB;
+    outline: 1px dotted #110038;
+    outline-offset: -4px;
+}
+
+.trendings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.trend-gif {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 280px;
+    clip-path: inset(1% 1% 1% 1%);
+    width: 24%;
+    overflow: hidden;
+    margin: 7px 0px;
+}
+.trend-gif:hover {
+    padding: 5px 1px;
+    clip-path: none;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    height: 280px;
+    box-sizing: border-box;
+
+}
+
+.trend-gif img {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.wide {
+    width:49.5%;
+
+    
+}
+.wide img {
+    height: auto;
+    width: 100%;
+}
+
+.wide:hover {
+    outline: 1px dotted #110038;
+    outline-offset: -10px; 
+}
+
+.night .viewmore {
+    background: #2E32FB;
+    box-shadow: inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.night .viewmore:hover{
+    background: #2629CC;
 }

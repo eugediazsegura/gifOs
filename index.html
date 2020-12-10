@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <title>ProyectoGifOS</title>
 </head>
+
 <body class="">
     <div class="topBar title" id="topBar">
         <p>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
@@ -15,27 +17,27 @@
         <nav>
             <img src="./assets/gifOF_logo.png" alt="logo" id="logo">
             <div>
-                
+
                 <a class="" href="#">
                     <div class="button-primary" id="button1">
                         Crear Guifos
                     </div>
                 </a>
-            
+
                 <div class="buttons">
                     <a class="" href="#">
                         <div class="button-primary" id="button2">
                             <p>Elegir tema</p>
                         </div>
-                    
+
                         <div class="button-primary" id="button3"></div>
-                      
+
                     </a>
                     <div class="dropdown" style="display: none">
                         <ul>
                             <li id="sailorDay"><span>Sailor Day</span></li>
                             <li id="sailorNight"><span>Sailor Night</span></li>
-                        </ul> 
+                        </ul>
                     </div>
                 </div>
 
@@ -46,58 +48,76 @@
         <div class="box">
             <h2 class="topBar font14">Buscar</h2>
             <div>
-                <input class = "input" type="text" name="search" id="search" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
+                <input class="input" type="text" name="search" id="search"
+                    placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
                 <button type="submit" class="submit">
                     <div class="lupa"></div>
                     <span>Buscar</span>
                 </button>
             </div>
         </div>
-        <div class = "subtitle">
+        <div class="subtitle">
             <h2>Hoy te sugerimos:</h2>
         </div>
         <div class="trend">
-            <div class="trending box">
+            <div class="suggestions box">
                 <div class="topBar">
-                    <h2 class="font14">#Hola</h2>
-                    <img src="/assets/close.svg" alt="">
-                </div> 
-                <div class="gif">
-                    <img src="./assets/giphy.webp" alt="">   
-                    </div>    
-            </div>
-
-            <div class="trending box">
-                <div class="topBar">
-                    <h2 class="font14">#Hola</h2>
+                    <h2 class="font14">#Jonathanvanness</h2>
                     <img src="/assets/close.svg" alt="">
                 </div>
                 <div class="gif">
-                <img src="./assets/giphy.webp" alt="">   
-                </div> 
+                    <img src="./assets/giphy.webp" alt="">
+                </div>
+                <div class="viewmore">
+                    <a href="#">Ver más...</a>
+                </div>
             </div>
 
-            <div class="trending box">
+            <div class="suggestions box">
                 <div class="topBar">
-                    <h2 class="font14">#Hola</h2>
+                    <h2 class="font14">#SailorMercury</h2>
                     <img src="/assets/close.svg" alt="">
                 </div>
                 <div class="gif">
-                    <img src="./assets/giphy.webp" alt="">   
-                    </div>     
+                    <img src="./assets/giphy.webp" alt="">
+                </div>
+                <div class="viewmore">
+                    <a href="#">Ver más...</a>
+                </div>
             </div>
 
-            <div class="trending box">
+            <div class="suggestions box">
                 <div class="topBar">
-                    <h2 class="font14">#Hola</h2>
+                    <h2 class="font14">#FabFive</h2>
                     <img src="/assets/close.svg" alt="">
                 </div>
                 <div class="gif">
-                    <img src="./assets/giphy.webp" alt="">   
-                    </div>      
+                    <img src="./assets/giphy.webp" alt="">
+                </div>
+                <div class="viewmore">
+                    <a href="#">Ver más...</a>
+                </div>
+            </div>
+            <div class="suggestions box">
+                <div class="topBar">
+                    <h2 class="font14">#Unicorns&Rainbows</h2>
+                    <img src="/assets/close.svg" alt="">
+                </div>
+                <div class="gif">
+                    <img src="./assets/giphy.webp" alt="">
+                </div>
+                <div class="viewmore">
+                    <a href="#">Ver más...</a>
+                </div>
             </div>
 
         </div>
-    <script src="script.js" ></script>
+        <div class="subtitle">
+            <h2>Tendencias:</h2>
+        </div>
+        <div class="trendings"></div>
+        <script src="script.js"></script>
+
 </body>
+
 </html>
