@@ -47,75 +47,84 @@
 
         <div class="box">
             <h2 class="topBar font14">Buscar</h2>
-            <div>
-                <input class="input" type="text" name="search" id="search"
-                    placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
-                <button type="submit" class="submit">
+            <div class="content-search">
+                <input class="input" type="text" name="search" id="search-input"
+                    placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" autocomplete="off">
+                <button type="submit" class="submit" id="search-submit">
                     <div class="lupa"></div>
                     <span>Buscar</span>
                 </button>
             </div>
         </div>
-        <div class="subtitle">
-            <h2>Hoy te sugerimos:</h2>
-        </div>
-        <div class="trend">
-            <div class="suggestions box">
-                <div class="topBar">
-                    <h2 class="font14">#Jonathanvanness</h2>
-                    <img src="/assets/close.svg" alt="">
-                </div>
-                <div class="gif">
-                    <img src="./assets/giphy.webp" alt="">
-                </div>
-                <div class="viewmore">
-                    <a href="#">Ver más...</a>
-                </div>
-            </div>
 
-            <div class="suggestions box">
-                <div class="topBar">
-                    <h2 class="font14">#SailorMercury</h2>
-                    <img src="/assets/close.svg" alt="">
-                </div>
-                <div class="gif">
-                    <img src="./assets/giphy.webp" alt="">
-                </div>
-                <div class="viewmore">
-                    <a href="#">Ver más...</a>
-                </div>
-            </div>
-
-            <div class="suggestions box">
-                <div class="topBar">
-                    <h2 class="font14">#FabFive</h2>
-                    <img src="/assets/close.svg" alt="">
-                </div>
-                <div class="gif">
-                    <img src="./assets/giphy.webp" alt="">
-                </div>
-                <div class="viewmore">
-                    <a href="#">Ver más...</a>
-                </div>
-            </div>
-            <div class="suggestions box">
-                <div class="topBar">
-                    <h2 class="font14">#Unicorns&Rainbows</h2>
-                    <img src="/assets/close.svg" alt="">
-                </div>
-                <div class="gif">
-                    <img src="./assets/giphy.webp" alt="">
-                </div>
-                <div class="viewmore">
-                    <a href="#">Ver más...</a>
-                </div>
-            </div>
-
+        <div class="dropdown results hidden">
+            <ul id="autocomplete">
+            </ul>
         </div>
-        <div class="subtitle">
-            <h2>Tendencias:</h2>
+        <div class="principal subtitle">
+            <h2 id="title1">Hoy te sugerimos:</h2>
         </div>
-        <div class="trendings"></div>
+        <div class="home">
+            <div class="trend">
+                <div class="suggestions box">
+                    <div class="topBar">
+                        <h2 class="font14">#Jonathanvanness</h2>
+                        <img src="/assets/close.svg" alt="">
+                    </div>
+                    <div class="gif">
+                        <img src="./assets/giphy.webp" alt="">
+                    </div>
+                    <div class="viewmore">
+                        <a href="#">Ver más...</a>
+                    </div>
+                </div>
+
+                <div class="suggestions box">
+                    <div class="topBar">
+                        <h2 class="font14">#SailorMercury</h2>
+                        <img src="/assets/close.svg" alt="">
+                    </div>
+                    <div class="gif">
+                        <img src="./assets/giphy.webp" alt="">
+                    </div>
+                    <div class="viewmore">
+                        <a href="#">Ver más...</a>
+                    </div>
+                </div>
+
+                <div class="suggestions box">
+                    <div class="topBar">
+                        <h2 class="font14">#FabFive</h2>
+                        <img src="/assets/close.svg" alt="">
+                    </div>
+                    <div class="gif">
+                        <img src="./assets/giphy.webp" alt="">
+                    </div>
+                    <div class="viewmore">
+                        <a href="#">Ver más...</a>
+                    </div>
+                </div>
+                <div class="suggestions box">
+                    <div class="topBar">
+                        <h2 class="font14">#Unicorns&Rainbows</h2>
+                        <img src="/assets/close.svg" alt="">
+                    </div>
+                    <div class="gif">
+                        <img src="./assets/giphy.webp" alt="">
+                    </div>
+                    <div class="viewmore">
+                        <a href="#">Ver más...</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="subtitle">
+                <h2>Tendencias:</h2>
+            </div>
+            <div class="trendings"></div>
+        </div>
+        <div class="searchs"></div>
+
         <script src="script.js"></script>
 
 </body>
