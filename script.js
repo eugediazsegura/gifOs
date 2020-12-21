@@ -58,7 +58,7 @@ sailorNight.addEventListener("click", () => {
 })
 
 sailorDay.addEventListener("click", () => {
-    
+
     body.classList.remove("night");
     logo.setAttribute("src", "assets/gifOF_logo.png");
     localStorage.setItem('night', false)
@@ -68,17 +68,17 @@ logo.addEventListener("click", () => {
     home.classList.remove("hidden");
 })
 
-inputSearch.addEventListener("focus", ()=> {
+inputSearch.addEventListener("focus", () => {
     addClassToButton();
 })
 
-inputSearch.addEventListener("focusout", ()=> {
+inputSearch.addEventListener("focusout", () => {
     buttonSearch.classList.remove("submit-imput", "nightSubmit-input")
     buttonSearch.classList.remove("active")
     lupa.style.removeProperty("background-Image")
-    
-   
-    
+
+
+
 })
 
 
@@ -89,15 +89,18 @@ inputSearch.addEventListener("focusout", ()=> {
 let getSearch = async (query) => {
     if (!/^[\s|\W]{1,}$/gm.test(query) == true) {
         const searchURI = [];
-        const getSearchApi = url + search + token + q + query + limit +'31' + '&offset=0' + rating
+        const getSearchApi = url + search + token + q + query + limit + '31' + '&offset=0' + rating
         let resultsSearch = await fetch(getSearchApi);
         let resultsSearchJson = await resultsSearch.json();
+        console.log(resultsSearchJson)
         if (resultsSearchJson.meta.status == 200) {
             let imagenesSearch = resultsSearchJson.data;
 
             for (const imagenSearch of imagenesSearch) {
                 searchURI.push({
-                    'src': imagenSearch.images.original.webp
+                    'src': imagenSearch.images.fixed_height.url,
+                    'width': imagenSearch.images.fixed_height.width
+
                 });
             }
             console.log(resultsSearch);
@@ -107,7 +110,7 @@ let getSearch = async (query) => {
 
             throw new Error(`No existen GIFs para ${query}`)
         }
-    }else if(query ==" "){
+    } else if (query == " ") {
         throw new Error(`No existen GIFs para espacio vacio`)
     } else {
 
@@ -117,78 +120,118 @@ let getSearch = async (query) => {
 
 }
 
- let getAutocomplete = async (query) => {
+let getAutocomplete = async (query) => {
     const autocompleteURI = [];
-    const getAutocompleteApi = url+ search + "/tags" + token + q + query + limit + '3'+ '&offset=0'
+    const getAutocompleteApi = url + search + "/tags" + token + q + query + limit + '3' + '&offset=0'
     let resultsAutocomplete = await fetch(getAutocompleteApi);
     let autocompleteJson = await resultsAutocomplete.json();
     let tags = autocompleteJson.data;
     for (let tag of tags) {
-        autocompleteURI.push({
-            'tag' : tag.name
-        });
+        autocompleteURI.push(tag.name);
     }
-    return autocompleteURI
+    return autocompleteURI;
 
-} 
+}
+
+inputSearch.addEventListener("keyup", () => {
+    if (inputSearch.value.length >= 3) {
+
+
+        getAutocomplete(inputSearch.value).then((tags) => {
+
+            autocompeteUl.innerHTML = " "
+            if (tags.length == 0) {
+                autocompleteDiv.classList.add("hidden")
+            }
+            for (let tag of tags) {
+                let li = document.createElement("li");
+                autocompeteUl.appendChild(li);
+                li.innerHTML = tag;
+                console.log(tags)
+                li.addEventListener("click", () => {
+                    ejecutarBusqueda(tag);
+                    inputSearch.value = tag
+                })
+                autocompleteDiv.classList.remove("hidden")
+
+            }
+
+        })
+
+        /*          for(tag of tags){
+                     let li = document.childElementCount("li");
+                     autocompeteUl.appendChild("li");
+                     li.innerHTML = tag
+                 }
+                autocompleteDiv.classList.remove("hidden")
+                 */
+
+    } else {
+        autocompleteDiv.classList.add("hidden")
+    }
+})
 
 
 
 function ejecutarBusqueda(inputValue) {
     getSearch(inputValue).then((gifs) => {
         home.classList.add("hidden");
-        searchGif.innerHTML=' ';
-        title.innerHTML=inputValue + " (resultados)"
-            for (let i = 1; i < gifs.length; i++) {
-                let div = document.createElement('div');
-                let img = document.createElement('img');
-                div.classList.add("trend-gif")
-                if (i % 5 == 0 && i > 0) {
-                    div.classList.add("wide")
-                }
-                //div.appendChild(div2);
-                div.appendChild(img);
-                img.setAttribute('src', gifs[i].src);
-                searchGif.appendChild(div)
-                autocompleteDiv.classList.add("hidden")
-                divTitle.style.marginTop = "100px"
-
-
-
+        searchGif.innerHTML = ' ';
+        title.innerHTML = inputValue + " (resultados)"
+        for (let i = 1; i < gifs.length; i++) {
+            let div = document.createElement('div');
+            let img = document.createElement('img');
+            div.classList.add("trend-gif")
+            if (i % 5 == 0 && i > 0) {
+                div.classList.add("wide")
             }
+            //div.appendChild(div2);
+            div.appendChild(img);
+            if (gifs[i].width < 259) {
+                img.style.width = "100%"
+                img.style.height = "auto"
+            }
+            img.setAttribute('src', gifs[i].src);
+            searchGif.appendChild(div)
+            autocompleteDiv.classList.add("hidden")
+            divTitle.style.marginTop = "100px"
 
 
-        }).catch((error) =>{
-            let divError = document.createElement('div');
-            divError.classList.add("error");
-            divError.innerHTML = error + " Intenta realizar una nueva búsqueda";
-            searchGif.appendChild(divError);
-        })
+
+        }
+
+
+    }).catch((error) => {
+        let divError = document.createElement('div');
+        divError.classList.add("error");
+        divError.innerHTML = error + " Intenta realizar una nueva búsqueda";
+        searchGif.appendChild(divError);
+    })
 }
 
 buttonSearch.addEventListener("click", () => {
     buttonSearch.classList.add("active")
     ejecutarBusqueda(inputSearch.value);
-    
+
+})
+
+buttonSearch.addEventListener("focus", () => {
+    addClassToButton();
+    buttonSearch.classList.add("active")
+
+})
+
+buttonSearch.addEventListener("focusout", () => {
+    buttonSearch.classList.remove("active")
+
 })
 
 inputSearch.addEventListener('keydown', (e) => {
     if (e.keyCode == '13') {
         buttonSearch.classList.add("active")
         ejecutarBusqueda(inputSearch.value);
-       
+
     }
-})
-
-buttonSearch.addEventListener("focus", () =>{
-    addClassToButton();
-    buttonSearch.classList.add("active")
-    
-})
-
-buttonSearch.addEventListener("focusout", () =>{
-    buttonSearch.classList.remove("active")
-    
 })
 
 let getsuggestionsGifs = async () => {
@@ -237,7 +280,8 @@ let getTrendingGifs = async () => {
     const trend = '/trending';
     const trendURI = [];
 
-    const getTrendingApi = url + trend + token + limit + rating
+    const getTrendingApi = url + trend + token + limit+ "31" + rating
+    console.log(getTrendingApi)
     let resultsTrend = await fetch(getTrendingApi);
     let resultsTrendJson = await resultsTrend.json();
     if (resultsTrendJson.meta.status == 200) {
@@ -245,7 +289,7 @@ let getTrendingGifs = async () => {
 
         for (const imagenTrend of imagenesTrend) {
             trendURI.push({
-                'src': imagenTrend.images.original.webp
+                'src': imagenTrend.images.fixed_height.url
             });
         }
         return trendURI;
@@ -320,13 +364,13 @@ getsuggestionsGifs().then(
 
     }); */
 
-    function addClassToButton() {
-        if (localStorage.getItem('night') == "false") {
-            buttonSearch.classList.add("submit-imput")
-            lupa.style.backgroundImage = 'url(/assets/lupa.svg)'
-        } else if (localStorage.getItem('night') == "true") {
-            buttonSearch.classList.add("nightSubmit-input")
-            lupa.style.backgroundImage = 'url(/assets/lupa_light.svg)'
-        }
-        
+function addClassToButton() {
+    if (localStorage.getItem('night') == "false") {
+        buttonSearch.classList.add("submit-imput")
+        lupa.style.backgroundImage = 'url(/assets/lupa.svg)'
+    } else if (localStorage.getItem('night') == "true") {
+        buttonSearch.classList.add("nightSubmit-input")
+        lupa.style.backgroundImage = 'url(/assets/lupa_light.svg)'
     }
+
+}

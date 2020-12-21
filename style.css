@@ -297,7 +297,7 @@ nav>div {
     color: #110038;
     font-size: 16px;
     line-height: 22px;
-    padding-left: 10px;
+    padding-left: 14px;
 
 }
 
@@ -436,6 +436,7 @@ nav>div {
     justify-content: center;
     height: 241px;
     clip-path: inset(1% 1% 1% 1%);
+    display: flex;
 }
 
 .viewmore {
@@ -547,8 +548,11 @@ nav>div {
     width: 86%;
     margin-left: 1%;
     margin-right: auto;
-    padding: 8px 0px;
+    padding: 8px 14px;
     margin-bottom: 8px;
+}
+.dropdown.results li::first-letter{
+    text-transform: capitalize
 }
 
 .dropdown.results li:hover{
