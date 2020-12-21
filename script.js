@@ -162,7 +162,7 @@ function ejecutarBusqueda(inputValue) {
             let divError = document.createElement('div');
             divError.classList.add("error");
             divError.innerHTML = error + " Intenta realizar una nueva búsqueda";
-            searchGif.appendChild(divError)
+            searchGif.appendChild(divError);
         })
 }
 
