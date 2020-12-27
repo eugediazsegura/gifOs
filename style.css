@@ -35,6 +35,8 @@ a {
     color: #FFFF;
     font-size: 12px;
     justify-content: space-between;
+    display: flex;
+    padding-right: 4px;
 
 }
 
@@ -429,13 +431,14 @@ nav>div {
 
 .suggestions .gif img {
     padding-right: 3px;
-    height: 280px;
+    height: 300px;
+    z-index: -2;
 }
 
 .gif {
     justify-content: center;
     height: 241px;
-    clip-path: inset(1% 1% 1% 1%);
+    clip-path: inset(0.4% 0% 0.4% 0.4%);
     display: flex;
 }
 
@@ -477,31 +480,42 @@ nav>div {
     justify-content: space-between;
 }
 
+.trendings .suggestions.box {
+    width: 24%;
+    height: fit-content;
+    margin-left: 0px;
+    margin-top: 9px;
+}
+
 .trend-gif {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 280px;
-    clip-path: inset(1% 1% 1% 1%);
+    height: 281px;
+    clip-path: inset(1% 0% 1% 0%);
     width: 24%;
     overflow: hidden;
     margin: 7px 0px;
-}
-.trend-gif:hover {
-    padding: 5px 1px;
-    clip-path: none;
-    background: #E6E6E6;
-    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-    height: 280px;
-    box-sizing: border-box;
-
 }
 
 .trend-gif img {
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-    align-items: center;
+    align-items: initial;
+}
+
+.gif.hover {
+    height: 272px;
+    margin: 0px;
+    padding: 0px;
+    outline: 1px dotted #110038;
+    outline-offset: -4px;
+
+}
+
+.tagsBar::before{
+    content: "#";
 }
 
 .wide {
@@ -510,13 +524,40 @@ nav>div {
     
 }
 .wide img {
-    height: auto;
     width: 100%;
+    top: 0px;
+    align-items: initial;
+    object-fit: cover;
+    object-position: top;
 }
 
-.wide:hover {
-    outline: 1px dotted #110038;
-    outline-offset: -10px; 
+
+.wide.suggestions.box {
+    width: 49%;
+
+}
+
+.wide.suggestions.box .gif.hover img {
+    object-fit: cover;
+}
+
+.topBar.hover {
+    position: absolute;
+    width: 294px;
+    margin-top: 250px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: -1;
+    padding-left: 6%;
+}
+
+.wide .topBar.hover {
+    padding-left: 3%;
+}
+
+.wide.suggestions.box .topBar.hover {
+    width: 40%;
 }
 
 .night .viewmore {
@@ -550,6 +591,7 @@ nav>div {
     margin-right: auto;
     padding: 8px 14px;
     margin-bottom: 8px;
+    cursor: pointer;
 }
 .dropdown.results li::first-letter{
     text-transform: capitalize
