@@ -321,7 +321,7 @@ getTrendingGifs().then(
                 //tagsBar = [0,1,2,3]
 
                 tagsBar.forEach(element => {
-                    element = '#' + element
+                    element =  "#" +element 
                     let span =document.createElement("span")
                     span.innerText = element
                     divBar.appendChild(span)

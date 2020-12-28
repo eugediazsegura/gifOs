@@ -15,17 +15,11 @@ input:focus {
     outline: none;
 }
 
-/* button:focus {
-    outline: none;
-} */
 
 a {
     text-decoration: none;
 }
 
-.night {
-    background-color: #110038;
-}
 
 .topBar {
     width: auto;
@@ -50,9 +44,7 @@ a {
     padding: 3px 0 0 5px
 }
 
-.night .topBar {
-    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
-}
+
 
 .content {
     margin-left: auto;
@@ -118,12 +110,7 @@ nav>div {
 
 }
 
-.buttons:hover .button-primary,
-.button-primary:hover, .active {
-    background-color: #E6BBE2;
-    outline: 1px dotted #110038;
-    outline-offset: -4px;
-}
+
 
 .myGifos {
     font-family: 'Chakra Petch', sans-serif;
@@ -175,10 +162,7 @@ nav>div {
     border-bottom: 1px solid #FFFFFF;
 }
 
-.night .buttons:hover .button-primary,
-.night .button-primary:hover {
-    background-color: #CE36DB;
-}
+
 
 .night .myGifos:hover {
     outline: 1px dotted #FFFFFF;
@@ -345,6 +329,15 @@ nav>div {
 
 }
 
+.buttons:hover .button-primary,
+.button-primary:hover, .active {
+    background-color: #E6BBE2;
+    outline: 1px dotted #110038;
+    outline-offset: -4px;
+}
+
+
+
 .lupa {
     background-image: url(/assets/lupa_inactive.svg);
     background-repeat: no-repeat;
@@ -379,6 +372,12 @@ nav>div {
     background: #EE3EFE;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.night .buttons:hover .button-primary,
+.night .button-primary:hover,
+.night .active {
+    background-color: #CE36DB;
 }
 
 .night .lupa {
@@ -543,13 +542,22 @@ nav>div {
 
 .topBar.hover {
     position: absolute;
-    width: 294px;
+    width: 20%;
     margin-top: 250px;
     display: flex;
     margin-right: auto;
     margin-left: auto;
     z-index: -1;
-    padding-left: 6%;
+    padding-left: 25px;
+    justify-content: start;
+    text-transform: lowercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.topBar.hover span {
+    margin-right: 3px;
 }
 
 .wide .topBar.hover {
@@ -598,7 +606,7 @@ nav>div {
 }
 
 .dropdown.results li:hover{
-    background: #E6E6E6;
+    background: #cbcaca;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     border: 1px solid #808080;
     outline: 1px dotted #110038;
@@ -612,4 +620,12 @@ nav>div {
 .night .dropdown.results li:hover{
     background: #CCCCCC;
     color: #110038;
+}
+
+.night {
+    background-color: #110038;
+}
+
+.night .topBar {
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
