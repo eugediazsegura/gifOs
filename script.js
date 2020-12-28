@@ -25,7 +25,9 @@ const limit = '&limit=';
 const q = '&q=';
 const tagsRelated = document.querySelector(".tags-related")
 
-
+let infinityScroll = false
+let infinityElement = 25;
+let infinityQuantity = 31;
 
 
 window.addEventListener("load", () => {
@@ -86,6 +88,26 @@ inputSearch.addEventListener("focusout", () => {
 
 
 })
+document.addEventListener('scroll', async () => {
+    let element = document.querySelector('.trendings>div:nth-child('+infinityElement+')');
+    if(element !== null){
+        if (window.innerHeight + window.scrollY > element.offsetTop
+            && infinityScroll == false) {
+   
+           infinityScroll = true;
+   
+           await getTrendingGifs(infinityQuantity).then((gifs) => {
+               addTrendingGif(gifs)
+           }).catch((error) => {
+               console.error(error)
+           })
+           infinityElement  += 31;
+           infinityQuantity += 31;
+           infinityScroll = false;
+       }
+    }
+    
+});
 
 
 
@@ -139,15 +161,15 @@ let getAutocomplete = async (query) => {
 
 }
 
-let getTags = async (query) =>{
-    
-    const tagsApi = 'https://api.giphy.com/v1/tags/related/term='+ query + token
+let getTags = async (query) => {
+
+    const tagsApi = 'https://api.giphy.com/v1/tags/related/term=' + query + token
     let tagsURI = [];
-   
+
     let result = await fetch(tagsApi);
     let resultsJson = await result.json();
     let tags = resultsJson.data;
-    
+
     for (const tag of tags) {
         tagsURI.push(tag.name)
     }
@@ -180,7 +202,7 @@ inputSearch.addEventListener("keypress", () => {
 
 
                 })
-                
+
                 autocompleteDiv.classList.remove("hidden")
             }
 
@@ -218,8 +240,8 @@ inputSearch.addEventListener('keyup', (e) => {
         buttonSearch.classList.add("active")
         ejecutarBusqueda(inputSearch.value);
         mostrarTags(inputSearch.value)
-        
-        
+
+
 
     }
 })
@@ -261,11 +283,11 @@ getsuggestionsGifs().then(
     });
 
 
-let getTrendingGifs = async () => {
+let getTrendingGifs = async (offset = 0) => {
     const trend = '/trending';
     const trendURI = [];
 
-    const getTrendingApi = url + trend + token + limit+ "31" + rating
+    const getTrendingApi = url + trend + token + limit + "31" + rating + "&offset=" + offset
     let resultsTrend = await fetch(getTrendingApi);
     let resultsTrendJson = await resultsTrend.json();
     if (resultsTrendJson.meta.status == 200) {
@@ -275,7 +297,7 @@ let getTrendingGifs = async () => {
                 'src': imagenTrend.images.fixed_height.url,
                 'width': imagenTrend.images.fixed_height.width,
                 'title': imagenTrend.title
-                
+
             });
         }
         return trendURI;
@@ -286,64 +308,69 @@ let getTrendingGifs = async () => {
 
 }
 
-getTrendingGifs().then(
-    (gifs) => {
-        for (let i = 1; i < gifs.length; i++) {
-            let div = document.createElement('div');
-            
-            let img = document.createElement('img');
-            div.classList.add("trend-gif")
-            if (i % 5 == 0 && i > 0) {
-                div.classList.add("wide")
-            }
-            div.appendChild(img);
-             if (gifs[i].width < 200) {
-                img.style.width = "100%"
-                img.style.objectFit = "cover"
-                img.style.objectPosition = "top"
-            } 
-            img.setAttribute('src', gifs[i].src);
-            img.addEventListener("mouseenter", ()=>{
-                div.classList.remove("trend-gif")
-                div.classList.add("suggestions", "box")
-                let div2=document.createElement("div")
-                let divBar = document.createElement("div")
-                div.appendChild(div2)
-                div2.classList.add("gif", "hover")
-                divBar.classList.add("topBar", "hover")
-                let title = gifs[i].title
-                let search = (title.indexOf("GIF")) - 1
-                let string = title.substr(0, search)
-                let tagsBar = string.split(" ")
-                //tagsBar = [0,1,2,3]
 
-                tagsBar.forEach(element => {
-                    element =  "#" +element 
-                    let span =document.createElement("span")
-                    span.innerText = element
-                    divBar.appendChild(span)
-                });
-                
-        
 
-                div2.appendChild(img)
-                div2.appendChild(divBar)
-            })
-            img.addEventListener("mouseleave", () =>{
-                 div.querySelector(".hover").remove()
-                
-                div.classList.remove("suggestions", "box")
-                div.classList.add("trend-gif")
-                div.appendChild(img)
-            })
-
-            trendGif.append(div)
-
-        }
-    }
-).catch((error) => {
+getTrendingGifs().then((gifs) => {
+    addTrendingGif(gifs)
+}).catch((error) => {
     console.error(error)
 })
+
+function addTrendingGif(gifs) {
+    for (let i = 1; i < gifs.length; i++) {
+        let div = document.createElement('div');
+
+        let img = document.createElement('img');
+        div.classList.add("trend-gif")
+        if (i % 5 == 0 && i > 0) {
+            div.classList.add("wide")
+        }
+        div.appendChild(img);
+        if (gifs[i].width < 200) {
+            img.style.width = "100%"
+            img.style.objectFit = "cover"
+            img.style.objectPosition = "top"
+        }
+        img.setAttribute('src', gifs[i].src);
+        img.addEventListener("mouseenter", () => {
+            div.classList.remove("trend-gif")
+            div.classList.add("suggestions", "box")
+            let div2 = document.createElement("div")
+            let divBar = document.createElement("div")
+            div.appendChild(div2)
+            div2.classList.add("gif", "hover")
+            divBar.classList.add("topBar", "hover")
+            let title = gifs[i].title
+            let search = (title.indexOf("GIF")) - 1
+            let string = title.substr(0, search)
+            let tagsBar = string.split(" ")
+            //tagsBar = [0,1,2,3]
+
+            tagsBar.forEach(element => {
+                element = "#" + element
+                let span = document.createElement("span")
+                span.innerText = element
+                divBar.appendChild(span)
+            });
+
+
+
+            div2.appendChild(img)
+            div2.appendChild(divBar)
+        })
+        img.addEventListener("mouseleave", () => {
+            div.querySelector(".hover").remove()
+
+            div.classList.remove("suggestions", "box")
+            div.classList.add("trend-gif")
+            div.appendChild(img)
+        })
+
+        trendGif.append(div)
+
+    }
+
+}
 
 function limpiarBusqueda() {
     searchGif.innerHTML = ' ';
@@ -353,6 +380,7 @@ function limpiarBusqueda() {
     title.classList.remove("hidden")
     autocompleteDiv.classList.add("hidden")
 }
+
 
 
 function addClassToButton() {
@@ -367,7 +395,7 @@ function addClassToButton() {
 }
 
 function mostrarTags(inputValue) {
-    
+
     getTags(inputValue).then((tags) => {
         console.log(tags)
         tagsRelated.innerHTML = ' '
@@ -375,7 +403,7 @@ function mostrarTags(inputValue) {
             let div = document.createElement("div")
             tagsRelated.appendChild(div)
             div.classList.add("tag")
-            div.addEventListener("click", () =>{
+            div.addEventListener("click", () => {
                 addClassToButton();
                 buttonSearch.classList.add("active")
                 inputSearch.value = tag
@@ -387,7 +415,7 @@ function mostrarTags(inputValue) {
             let tagSinEspacio = tag.replace(/ /g, "")
             div.innerHTML = "#" + tagSinEspacio
         }
-        
+
     })
 }
 
@@ -398,7 +426,7 @@ function ejecutarBusqueda(inputValue) {
         title.classList.remove("hidden")
         searchGif.innerHTML = ' ';
         title.innerHTML = inputValue + " (resultados)"
-        
+
         for (let i = 1; i < gifs.length; i++) {
             let div = document.createElement('div');
             let img = document.createElement('img');
@@ -409,11 +437,11 @@ function ejecutarBusqueda(inputValue) {
             }
             //div.appendChild(div2);
             div.appendChild(img);
-             if (gifs[i].width < 200) {
+            if (gifs[i].width < 200) {
                 img.style.width = "100%"
                 img.style.objectFit = "cover"
                 img.style.objectPosition = "top"
-            } 
+            }
             img.setAttribute('src', gifs[i].src);
             searchGif.appendChild(div)
             //divTitle.style.marginTop = "100px"
