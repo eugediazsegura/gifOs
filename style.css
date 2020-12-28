@@ -2,8 +2,9 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    
+
 }
+
 body {
     transition: background 0.3s ease;
 }
@@ -11,6 +12,7 @@ body {
 .hidden {
     display: none;
 }
+
 input:focus {
     outline: none;
 }
@@ -57,10 +59,11 @@ a {
 #logo {
     width: 8%;
     height: 100%;
-    
+
 }
+
 #logo:hover {
-    cursor:pointer
+    cursor: pointer
 }
 
 nav {
@@ -140,48 +143,6 @@ nav>div {
     border-bottom: 1px solid hsl(258, 100%, 82%);
 }
 
-.night .button-primary {
-    background: #EE3EFE;
-    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-    color: #FFFFFF;
-
-
-}
-
-.night .buttons .button-primary:last-child {
-    background-image: url(/assets/dropdownnight.svg);
-}
-
-.night .myGifos {
-    color: #FFFFFF;
-    ;
-
-}
-
-.night .myGifos::first-letter {
-    border-bottom: 1px solid #FFFFFF;
-}
-
-
-
-.night .myGifos:hover {
-    outline: 1px dotted #FFFFFF;
-}
-
-.night .myGifos:hover {
-    outline: 1px dotted #FFFFFF;
-}
-
-.night .myGifos:active {
-    color: hsl(0, 0%, 61%);
-    outline: 0px;
-}
-
-.night .myGifos:active::first-letter {
-    border-bottom: 1px solid hsl(0, 0%, 61%);
-    ;
-}
-
 
 .dropdown {
     position: absolute;
@@ -227,29 +188,6 @@ nav>div {
 
 }
 
-.night .dropdown {
-    background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
-}
-
-.night .dropdown li {
-    background: #CCCCCC;
-    border: 1px solid #808080;
-    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-
-}
-
-.night .dropdown li:hover {
-    background: #2E32FB;
-    color: #FFFFFF;
-
-}
-
-.night .dropdown li:hover::first-letter {
-    border-bottom: 1px solid #FFFFFF;
-
-}
-
 .box {
     width: auto;
     height: 90px;
@@ -287,8 +225,6 @@ nav>div {
 
 }
 
-
-
 .box input::placeholder {
     color: #B4B4B4;
 }
@@ -305,7 +241,7 @@ nav>div {
     font-size: 16.6px;
     letter-spacing: 0;
     line-height: 17px;
-    
+
 }
 
 .submit {
@@ -314,9 +250,8 @@ nav>div {
     background: #E6E6E6;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    
-}
 
+}
 
 .submit-imput {
     color: #110038;
@@ -324,13 +259,15 @@ nav>div {
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
 }
-.submit-imput:active{
+
+.submit-imput:active {
     outline: 1px dotted #110038;
 
 }
 
 .buttons:hover .button-primary,
-.button-primary:hover, .active {
+.button-primary:hover,
+.active {
     background-color: #E6BBE2;
     outline: 1px dotted #110038;
     outline-offset: -4px;
@@ -352,46 +289,10 @@ nav>div {
     background-image: url(/assets/lupa.svg);
 }
 
-
-
-.night .box {
-    background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
-}
-
-
-
-.night .submit {
-    color: #8F8F8F;
-    background: #B4B4B4;
-
-}
-
-.night .nightSubmit-input {
-    color: white;
-    background: #EE3EFE;
-    border: 1px solid #110038;
-    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-}
-
-.night .buttons:hover .button-primary,
-.night .button-primary:hover,
-.night .active {
-    background-color: #CE36DB;
-}
-
-.night .lupa {
-    background-image: url(/assets/Combined-Shape.svg);
-}
-
-.night .lupa-input {
-    background-image: url(/assets/lupa_light.svg);
-}
 .subtitle {
     background: #FFFAFE;
     border: 1px solid #E6BBE2;
     box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
-    margin-top: 64px;
     margin-bottom: 16px;
 }
 
@@ -404,10 +305,7 @@ nav>div {
     padding: 7px;
 }
 
-.night .subtitle {
-    border: 1px solid #2E32FB;
-    box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #110038;
-}
+
 
 .trend {
     display: flex;
@@ -486,6 +384,8 @@ nav>div {
     margin-top: 9px;
 }
 
+/*se aplican por js*/
+
 .trend-gif {
     display: flex;
     align-items: center;
@@ -513,15 +413,14 @@ nav>div {
 
 }
 
-.tagsBar::before{
+.tagsBar::before {
     content: "#";
 }
 
 .wide {
-    width:49.5%;
-
-    
+    width: 49.5%;
 }
+
 .wide img {
     width: 100%;
     top: 0px;
@@ -568,15 +467,6 @@ nav>div {
     width: 40%;
 }
 
-.night .viewmore {
-    background: #2E32FB;
-    box-shadow: inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 #FFFFFF;
-}
-
-.night .viewmore:hover{
-    background: #2629CC;
-}
-
 .dropdown.results {
     position: absolute;
     width: 80%;
@@ -587,7 +477,8 @@ nav>div {
     z-index: 10;
     max-width: 1200px;
 }
-.searchs{
+
+.searchs {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -601,11 +492,12 @@ nav>div {
     margin-bottom: 8px;
     cursor: pointer;
 }
-.dropdown.results li::first-letter{
+
+.dropdown.results li::first-letter {
     text-transform: capitalize
 }
 
-.dropdown.results li:hover{
+.dropdown.results li:hover {
     background: #cbcaca;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     border: 1px solid #808080;
@@ -613,14 +505,32 @@ nav>div {
     outline-offset: -4px;
 }
 
-.night .dropdown.results{
-    background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+.tags-related{
+    display: flex;
+    height: 100px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 8px 0;
 }
-.night .dropdown.results li:hover{
-    background: #CCCCCC;
-    color: #110038;
+
+.tag {
+    background: #4180F6;
+    border: 1px solid #4C2F99;
+    box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+    margin-left: 9px;
+    height: 32px;
+    margin-top: 0px;
+    line-height: 32px;
+    font-family: 'Chakra Petch';
+    color: #fff;
+    padding: 0 11px;
 }
+
+.tag:hover {
+    cursor: pointer;
+}
+
+/*TEMA NIGHT*/
 
 .night {
     background-color: #110038;
@@ -628,4 +538,127 @@ nav>div {
 
 .night .topBar {
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.night .button-primary {
+    background: #EE3EFE;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+    color: #FFFFFF;
+
+
+}
+
+.night .buttons .button-primary:last-child {
+    background-image: url(/assets/dropdownnight.svg);
+}
+
+.night .myGifos {
+    color: #FFFFFF;
+    ;
+
+}
+
+.night .myGifos::first-letter {
+    border-bottom: 1px solid #FFFFFF;
+}
+
+
+
+.night .myGifos:hover {
+    outline: 1px dotted #FFFFFF;
+}
+
+.night .myGifos:hover {
+    outline: 1px dotted #FFFFFF;
+}
+
+.night .myGifos:active {
+    color: hsl(0, 0%, 61%);
+    outline: 0px;
+}
+
+.night .myGifos:active::first-letter {
+    border-bottom: 1px solid hsl(0, 0%, 61%);
+    ;
+}
+
+.night .dropdown {
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.night .dropdown li {
+    background: #CCCCCC;
+    border: 1px solid #808080;
+    box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+
+}
+
+.night .dropdown li:hover {
+    background: #2E32FB;
+    color: #FFFFFF;
+
+}
+
+.night .dropdown li:hover::first-letter {
+    border-bottom: 1px solid #FFFFFF;
+
+}
+
+.night .box {
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+}
+
+
+
+.night .submit {
+    color: #8F8F8F;
+    background: #B4B4B4;
+
+}
+
+.night .nightSubmit-input {
+    color: white;
+    background: #EE3EFE;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.night .buttons:hover .button-primary,
+.night .button-primary:hover,
+.night .active {
+    background-color: #CE36DB;
+}
+
+.night .lupa {
+    background-image: url(/assets/Combined-Shape.svg);
+}
+
+.night .lupa-input {
+    background-image: url(/assets/lupa_light.svg);
+}
+
+.night .subtitle {
+    border: 1px solid #2E32FB;
+    box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #110038;
+}
+
+.night .viewmore {
+    background: #2E32FB;
+    box-shadow: inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.night .viewmore:hover {
+    background: #2629CC;
+}
+
+.night .dropdown.results {
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.night .dropdown.results li:hover {
+    background: #CCCCCC;
+    color: #110038;
 }

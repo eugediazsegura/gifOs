@@ -22,7 +22,8 @@ const trendGif = document.querySelector('.trendings');
 const searchGif = document.querySelector('.searchs')
 const search = "/search";
 const limit = '&limit=';
-const q = '&q='
+const q = '&q=';
+const tagsRelated = document.querySelector(".tags-related")
 
 
 
@@ -32,6 +33,9 @@ window.addEventListener("load", () => {
         body.classList.add("night");
         logo.setAttribute("src", "assets/gifOF_logo_dark.png");
         searchGif.innerHTML = ' ';
+        tagsRelated.innerHTML = ' '
+        title.classList.remove("hidden")
+        title.innerHTML = "Hoy te sugerimos: "
     }
 
 })
@@ -66,10 +70,9 @@ sailorDay.addEventListener("click", () => {
 })
 
 logo.addEventListener("click", () => {
-    searchGif.innerHTML = ' ';
-    home.classList.remove("hidden");
-    autocompleteDiv.classList.add("hidden")
+    limpiarBusqueda();
 })
+
 
 inputSearch.addEventListener("focus", () => {
     addClassToButton();
@@ -85,14 +88,16 @@ inputSearch.addEventListener("focusout", () => {
 })
 
 
+
 let getSearch = async (query) => {
     if (!/^[\s|\W]{1,}$/gm.test(query) == true) {
         const searchURI = [];
         const getSearchApi = url + search + token + q + query + limit + '31' + '&offset=0' + rating
         let resultsSearch = await fetch(getSearchApi);
         let resultsSearchJson = await resultsSearch.json();
-        console.log(resultsSearchJson)
-        if (resultsSearchJson.meta.status == 200) {
+        console.log("entro")
+        if (resultsSearchJson.meta.status == 200 && resultsSearchJson.data.length != 0) {
+            console.log("entro")
             let imagenesSearch = resultsSearchJson.data;
 
             for (const imagenSearch of imagenesSearch) {
@@ -102,10 +107,11 @@ let getSearch = async (query) => {
 
                 });
             }
-            console.log(resultsSearch);
             return searchURI;
+            console.log(searchURI)
 
         } else {
+            console.log("resultsSearchJson.data.length")
 
             throw new Error(`No existen GIFs para ${query}`)
         }
@@ -122,6 +128,7 @@ let getSearch = async (query) => {
 let getAutocomplete = async (query) => {
     const autocompleteURI = [];
     const getAutocompleteApi = url + search + "/tags" + token + q + query + limit + '3' + '&offset=0'
+    console.log(getAutocompleteApi)
     let resultsAutocomplete = await fetch(getAutocompleteApi);
     let autocompleteJson = await resultsAutocomplete.json();
     let tags = autocompleteJson.data;
@@ -132,8 +139,25 @@ let getAutocomplete = async (query) => {
 
 }
 
-inputSearch.addEventListener("keyup", () => {
-    if (inputSearch.value.length >= 3) {
+let getTags = async (query) =>{
+    
+    const tagsApi = 'https://api.giphy.com/v1/tags/related/term='+ query + token
+    let tagsURI = [];
+   
+    let result = await fetch(tagsApi);
+    let resultsJson = await result.json();
+    let tags = resultsJson.data;
+    
+    for (const tag of tags) {
+        tagsURI.push(tag.name)
+    }
+    return tagsURI;
+
+
+}
+
+inputSearch.addEventListener("keypress", () => {
+    if (inputSearch.value.length >= 2) {
 
 
         getAutocomplete(inputSearch.value).then((tags) => {
@@ -148,11 +172,16 @@ inputSearch.addEventListener("keyup", () => {
                 li.innerHTML = tag;
                 console.log(tags)
                 li.addEventListener("click", () => {
+                    addClassToButton();
+                    buttonSearch.classList.add("active")
                     ejecutarBusqueda(tag);
+                    mostrarTags(tag)
                     inputSearch.value = tag
-                })
-                autocompleteDiv.classList.remove("hidden")
 
+
+                })
+                
+                autocompleteDiv.classList.remove("hidden")
             }
 
         })
@@ -164,47 +193,10 @@ inputSearch.addEventListener("keyup", () => {
 })
 
 
-
-function ejecutarBusqueda(inputValue) {
-    getSearch(inputValue).then((gifs) => {
-        home.classList.add("hidden");
-        searchGif.innerHTML = ' ';
-        title.innerHTML = inputValue + " (resultados)"
-        for (let i = 1; i < gifs.length; i++) {
-            let div = document.createElement('div');
-            let img = document.createElement('img');
-            div.classList.add("trend-gif")
-            if (i % 5 == 0 && i > 0) {
-                div.classList.add("wide")
-            }
-            //div.appendChild(div2);
-            div.appendChild(img);
-             if (gifs[i].width < 200) {
-                img.style.width = "100%"
-                img.style.objectFit = "cover"
-                img.style.objectPosition = "top"
-            } 
-            img.setAttribute('src', gifs[i].src);
-            searchGif.appendChild(div)
-            autocompleteDiv.classList.add("hidden")
-            divTitle.style.marginTop = "100px"
-
-
-
-        }
-
-
-    }).catch((error) => {
-        let divError = document.createElement('div');
-        divError.classList.add("error");
-        divError.innerHTML = error + " Intenta realizar una nueva búsqueda";
-        searchGif.appendChild(divError);
-    })
-}
-
 buttonSearch.addEventListener("click", () => {
     buttonSearch.classList.add("active")
     ejecutarBusqueda(inputSearch.value);
+    mostrarTags(inputSearch.value)
 
 })
 
@@ -219,13 +211,21 @@ buttonSearch.addEventListener("focusout", () => {
 
 })
 
-inputSearch.addEventListener('keydown', (e) => {
+inputSearch.addEventListener('keyup', (e) => {
     if (e.keyCode == '13') {
+        e.preventDefault
+        autocompleteDiv.classList.add("hidden")
         buttonSearch.classList.add("active")
         ejecutarBusqueda(inputSearch.value);
+        mostrarTags(inputSearch.value)
+        
+        
 
     }
 })
+
+
+
 
 let getsuggestionsGifs = async () => {
 
@@ -251,7 +251,6 @@ let getsuggestionsGifs = async () => {
 
 getsuggestionsGifs().then(
     (gifs) => {
-        console.log(gifs);
         for (let i = 0; i < gifs.length; i++) {
             suggGif[i].setAttribute('src', gifs[i].src);
             suggButton[i].setAttribute('href', gifs[i].url)
@@ -267,12 +266,10 @@ let getTrendingGifs = async () => {
     const trendURI = [];
 
     const getTrendingApi = url + trend + token + limit+ "31" + rating
-    console.log(getTrendingApi)
     let resultsTrend = await fetch(getTrendingApi);
     let resultsTrendJson = await resultsTrend.json();
     if (resultsTrendJson.meta.status == 200) {
         let imagenesTrend = resultsTrendJson.data;
-        console.log(resultsTrendJson)
         for (const imagenTrend of imagenesTrend) {
             trendURI.push({
                 'src': imagenTrend.images.fixed_height.url,
@@ -328,9 +325,7 @@ getTrendingGifs().then(
                 });
                 
         
-                
-                //console.log(stringEnArray) 
-                //divBar.innerHTML = string
+
                 div2.appendChild(img)
                 div2.appendChild(divBar)
             })
@@ -350,6 +345,15 @@ getTrendingGifs().then(
     console.error(error)
 })
 
+function limpiarBusqueda() {
+    searchGif.innerHTML = ' ';
+    tagsRelated.innerHTML = ' '
+    title.innerHTML = "Hoy te sugerimos:"
+    home.classList.remove("hidden");
+    title.classList.remove("hidden")
+    autocompleteDiv.classList.add("hidden")
+}
+
 
 function addClassToButton() {
     if (localStorage.getItem('night') == "false") {
@@ -360,4 +364,73 @@ function addClassToButton() {
         lupa.style.backgroundImage = 'url(/assets/lupa_light.svg)'
     }
 
+}
+
+function mostrarTags(inputValue) {
+    
+    getTags(inputValue).then((tags) => {
+        console.log(tags)
+        tagsRelated.innerHTML = ' '
+        for (const tag of tags) {
+            let div = document.createElement("div")
+            tagsRelated.appendChild(div)
+            div.classList.add("tag")
+            div.addEventListener("click", () =>{
+                addClassToButton();
+                buttonSearch.classList.add("active")
+                inputSearch.value = tag
+                ejecutarBusqueda(tag)
+                mostrarTags(tag)
+
+
+            })
+            let tagSinEspacio = tag.replace(/ /g, "")
+            div.innerHTML = "#" + tagSinEspacio
+        }
+        
+    })
+}
+
+
+function ejecutarBusqueda(inputValue) {
+    getSearch(inputValue).then((gifs) => {
+        home.classList.add("hidden");
+        title.classList.remove("hidden")
+        searchGif.innerHTML = ' ';
+        title.innerHTML = inputValue + " (resultados)"
+        
+        for (let i = 1; i < gifs.length; i++) {
+            let div = document.createElement('div');
+            let img = document.createElement('img');
+            img.src = "/assets/giphy.webp"
+            div.classList.add("trend-gif")
+            if (i % 5 == 0 && i > 0) {
+                div.classList.add("wide")
+            }
+            //div.appendChild(div2);
+            div.appendChild(img);
+             if (gifs[i].width < 200) {
+                img.style.width = "100%"
+                img.style.objectFit = "cover"
+                img.style.objectPosition = "top"
+            } 
+            img.setAttribute('src', gifs[i].src);
+            searchGif.appendChild(div)
+            //divTitle.style.marginTop = "100px"
+            autocompleteDiv.classList.add("hidden")
+
+
+
+        }
+
+
+    }).catch((error) => {
+        home.classList.add("hidden");
+        title.classList.add("hidden")
+        searchGif.innerHTML = ' ';
+        let divError = document.createElement('div');
+        divError.classList.add("font14");
+        divError.innerHTML = error + " Intenta realizar una nueva búsqueda";
+        searchGif.appendChild(divError);
+    })
 }
