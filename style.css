@@ -98,6 +98,7 @@ nav>div {
     line-height: 18px;
     height: 26px;
     padding: 6px 26px 0 26px;
+    cursor: pointer;
 
 
 }
@@ -530,12 +531,23 @@ nav>div {
     cursor: pointer;
 }
 
+/*VIDEO*/
+
 .video .box {
     width: 55%;
     margin-left: auto;
     margin-right: auto;
-    height: 386px;
+    height: 362px;
     margin-top: 50px;
+    margin-bottom: 150px
+}
+
+.video .box#modal2{
+    display: none;
+    width: 68%;
+    margin-left: auto;
+    margin-right: 18%;
+    height: 470px;
 }
 
 .info {
@@ -580,6 +592,68 @@ nav>div {
 .text p span.i {
     font-style: italic;
 }
+
+.video #logo {
+    width: 95%;
+    height: auto;
+}
+
+.logo:before {
+    content: url(../assets/arrow.svg);
+    position: absolute;
+    margin-left: -40px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.video nav{
+    justify-content: flex-start;
+}
+
+.video nav span{
+    padding-left: 40px;
+    margin-left: -40px;
+    z-index: 999;
+
+}
+
+.btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.btn .button-primary {
+    margin-right: 13px;
+}
+
+.cancel{
+    background-color: #FFF4FD;
+}
+
+.cancel:hover{
+    background-color: #e7e7e7;
+}
+
+.camera{
+    background: #fff;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    object-fit: cover;
+    margin: 11px;
+    height: 361px;  
+}
+
+video {
+    width: 99.6%;
+    clip-path: inset(0.4% 0% 25.5% 0.4%);
+    background: #fff;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    object-fit: cover;
+    height: fit-content;
+}
+
 
 /*TEMA NIGHT*/
 
@@ -712,4 +786,12 @@ nav>div {
 .night .dropdown.results li:hover {
     background: #CCCCCC;
     color: #110038;
+}
+
+.night .cancel{
+    background-color: #919191;
+}
+
+.night .cancel:hover{
+    background-color: #6c6c6c;
 }

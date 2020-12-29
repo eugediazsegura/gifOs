@@ -31,6 +31,7 @@ let infinityQuantity = 31;
 
 
 window.addEventListener("load", () => {
+    console.log("entro")
     if (localStorage.getItem('night') == "true") {
         body.classList.add("night");
         logo.setAttribute("src", "assets/gifOF_logo_dark.png");
@@ -307,7 +308,6 @@ let getTrendingGifs = async (offset = 0) => {
 
 
 }
-
 
 
 getTrendingGifs().then((gifs) => {
