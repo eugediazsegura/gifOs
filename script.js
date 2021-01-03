@@ -33,25 +33,18 @@ let infinityQuantity = 31;
 window.addEventListener("load", () => {
     console.log("entro")
     if (localStorage.getItem('night') == "true") {
+        limpiarBusqueda();
         body.classList.add("night");
         logo.setAttribute("src", "assets/gifOF_logo_dark.png");
-        searchGif.innerHTML = ' ';
-        tagsRelated.innerHTML = ' '
-        title.classList.remove("hidden")
-        title.innerHTML = "Hoy te sugerimos: "
     }
 
 })
 
 buttonsHover.addEventListener("click", (e) => {
     e.stopPropagation();
-    if (dropdown.style.display == "none") {
-        dropdown.style.display = "block";
-    } else {
-        dropdown.style.display = "none";
-    }
-
-})
+    dropdown.style.display=="none"? dropdown.style.display = "block" : dropdown.style.display = "none";
+/*     buttonSearch.classList.remove("submit-imput", "nightSubmit-input")
+ */})
 
 document.addEventListener("scroll", () => {
     dropdown.style.display = "none";
@@ -62,6 +55,9 @@ document.addEventListener("scroll", () => {
 sailorNight.addEventListener("click", () => {
     body.classList.add("night");
     logo.setAttribute("src", "assets/gifOF_logo_dark.png");
+    if (buttonSearch.classList.contains('active')) {
+        lupa.style.backgroundImage = 'url(/assets/lupa_light.svg)'
+    }
     localStorage.setItem('night', true)
 })
 
@@ -69,16 +65,23 @@ sailorDay.addEventListener("click", () => {
 
     body.classList.remove("night");
     logo.setAttribute("src", "assets/gifOF_logo.png");
+    if (buttonSearch.classList.contains('active')) {
+        lupa.style.backgroundImage = 'url(/assets/lupa.svg)'
+    }
     localStorage.setItem('night', false)
 })
 
 logo.addEventListener("click", () => {
     limpiarBusqueda();
+    location.reload()
+    
+    
 })
 
 
 inputSearch.addEventListener("focus", () => {
     addClassToButton();
+    dropdown.style.display = "none"
 })
 
 inputSearch.addEventListener("focusout", () => {
@@ -219,7 +222,8 @@ inputSearch.addEventListener("keypress", () => {
 buttonSearch.addEventListener("click", () => {
     buttonSearch.classList.add("active")
     ejecutarBusqueda(inputSearch.value);
-    mostrarTags(inputSearch.value)
+    mostrarTags(inputSearch.value);
+    
 
 })
 
@@ -324,6 +328,10 @@ function addTrendingGif(gifs) {
         div.classList.add("trend-gif")
         if (i % 5 == 0 && i > 0) {
             div.classList.add("wide")
+            if (gifs[i].width < 270) {
+                img.style.objectPosition = "center"
+                
+            }
         }
         div.appendChild(img);
         if (gifs[i].width < 200) {
@@ -375,6 +383,7 @@ function addTrendingGif(gifs) {
 function limpiarBusqueda() {
     searchGif.innerHTML = ' ';
     tagsRelated.innerHTML = ' '
+    tagsRelated.style.height = "50px"
     title.innerHTML = "Hoy te sugerimos:"
     home.classList.remove("hidden");
     title.classList.remove("hidden")
@@ -397,7 +406,6 @@ function addClassToButton() {
 function mostrarTags(inputValue) {
 
     getTags(inputValue).then((tags) => {
-        console.log(tags)
         tagsRelated.innerHTML = ' '
         for (const tag of tags) {
             let div = document.createElement("div")
@@ -415,6 +423,7 @@ function mostrarTags(inputValue) {
             let tagSinEspacio = tag.replace(/ /g, "")
             div.innerHTML = "#" + tagSinEspacio
         }
+        tagsRelated.style.height = "75px"
 
     })
 }
@@ -434,6 +443,10 @@ function ejecutarBusqueda(inputValue) {
             div.classList.add("trend-gif")
             if (i % 5 == 0 && i > 0) {
                 div.classList.add("wide")
+                if (gifs[i].width < 270) {
+                    img.style.objectPosition = "center"
+                    
+                }
             }
             //div.appendChild(div2);
             div.appendChild(img);
@@ -446,6 +459,7 @@ function ejecutarBusqueda(inputValue) {
             searchGif.appendChild(div)
             //divTitle.style.marginTop = "100px"
             autocompleteDiv.classList.add("hidden")
+            body.classList.add("busqueda")
 
 
 

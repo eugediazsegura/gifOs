@@ -274,7 +274,21 @@ nav>div {
     outline-offset: -4px;
 }
 
+.busqueda .active {
+    color: #110038;
+}
 
+.busqueda .active .lupa {
+    background-image:  url(/assets/lupa.svg);
+} 
+
+.night.busqueda .active .lupa{
+    background-image: url(/assets/lupa_light.svg);
+}
+
+.night.busqueda .active{
+    color: #ffff
+}
 
 .lupa {
     background-image: url(/assets/lupa_inactive.svg);
@@ -311,6 +325,7 @@ nav>div {
 .trend {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 59px;
 }
 
 .suggestions.box {
@@ -461,16 +476,16 @@ nav>div {
 }
 
 .wide .topBar.hover {
-    padding-left: 3%;
+    padding-left: 29px;
 }
 
 .wide.suggestions.box .topBar.hover {
-    width: 40%;
+    width: 42%;
 }
 
 .dropdown.results {
     position: absolute;
-    width: 80%;
+    width: 86%;
     height: auto;
     background: #E6E6E6;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
@@ -508,10 +523,10 @@ nav>div {
 
 .tags-related{
     display: flex;
-    height: 100px;
+    height: 50px;
     flex-wrap: wrap;
-    align-items: center;
-    margin: 8px 0;
+    align-items: flex-start;
+    margin: 11px 0;
 }
 
 .tag {
@@ -547,7 +562,7 @@ nav>div {
     width: 68%;
     margin-left: auto;
     margin-right: 18%;
-    height: 470px;
+    height: 458px;
 }
 
 .info {
@@ -654,6 +669,22 @@ video {
     height: fit-content;
 }
 
+.video .buttons a {
+    justify-content: flex-end;
+    margin: 17px 0;
+}
+
+.video div#button3 {
+    padding: 6px 16px 0 16px;
+    background-image: url(./assets/camera.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.video div#button4 {
+    background-image: none;
+    padding: 6px 28px 0 28px;
+}
 
 /*TEMA NIGHT*/
 
@@ -794,4 +825,9 @@ video {
 
 .night .cancel:hover{
     background-color: #6c6c6c;
+}
+
+.video.night div#button3 {
+    background-image: url(./assets/camera_light.svg);
+
 }

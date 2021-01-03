@@ -5,6 +5,11 @@ const start = document.querySelector('#start');
 const modal1 = document.querySelector('#modal1');
 const modal2 = document.querySelector('#modal2');
 const video = document.querySelector('video');
+const capturar = document.querySelector('#button4')
+
+
+let grabar;
+let grabando = false;
 
 logo.addEventListener("click", () =>{
     window.location = "../index.html"
@@ -27,11 +32,11 @@ window.addEventListener("load", () => {
 start.addEventListener("click", ()=>{
     modal1.classList.add("hidden");
     modal2.style.display = "block"
-    getVideo();
+    getStreamAndRecord();
 
 })
 
-function getVideo() {
+function getStreamAndRecord() {
     navigator.mediaDevices.getUserMedia({
             audio: false,
             video: {
@@ -43,11 +48,16 @@ function getVideo() {
                 }
             }
         })
-        .then(function (source) {
-            video.srcObject = source;
+        .then(function (stream) {
+            video.srcObject = stream;
             video.play();
+            capturar.addEventListener('click', startVideoRecord(source));
 
           
             
         });
 };
+
+startVideoRecord(stream){
+
+}
