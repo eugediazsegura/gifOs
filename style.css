@@ -562,7 +562,7 @@ nav>div {
     width: 68%;
     margin-left: auto;
     margin-right: 18%;
-    height: 458px;
+    height: 500px;
 }
 
 .info {
@@ -656,12 +656,12 @@ nav>div {
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
     object-fit: cover;
     margin: 11px;
-    height: 361px;  
+    height: 400px;  
 }
 
 video {
     width: 99.6%;
-    clip-path: inset(0.4% 0% 25.5% 0.4%);
+    clip-path: inset(0.4% 0% 17.5% 0.4%);
     background: #fff;
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
