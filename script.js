@@ -380,6 +380,7 @@ function addTrendingGif(gifs) {
 
 }
 
+
 function limpiarBusqueda() {
     searchGif.innerHTML = ' ';
     tagsRelated.innerHTML = ' '
@@ -449,6 +450,7 @@ function ejecutarBusqueda(inputValue) {
                 }
             }
             //div.appendChild(div2);
+            
             div.appendChild(img);
             if (gifs[i].width < 200) {
                 img.style.width = "100%"
