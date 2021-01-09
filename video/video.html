@@ -53,11 +53,21 @@
                 <img src="../assets/close.svg" alt="close">
             </div>  
             <div class="camera">
-                <video src=""></video>
-                <img class="preview hidden" src="" alt="gif">
+                <video src="" class="preview"></video>
+                <img class="preview hidden" src="" alt="gif" id="gif-preview">
+                <div class="modal-bar hidden">
+                    <img src="../assets/globe_img.png" alt="globe" >
+                    <p>Estamos subiendo tu guifo…</p>
+                    <div class="progress-bar" id="uploadProgressBar"></div>
+                    <p id="time">Tiempo restante</p>
+                </div>
             </div>
             <div class="btn2">
                 <div class="counter"></div>
+                <div class="time hidden">
+                    <div id="button-arrow"></div>
+                    <div class="progress-bar" id="timeProgressBar"></div>
+                </div>
                 <a id="btns-preview">
                     <div class="button-primary video" id="button3"></div>
                     <div class="button-primary video" id="button4">

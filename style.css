@@ -263,12 +263,16 @@ nav>div {
 
 }
 
-.buttons:hover .button-primary:not(.recording),
+a#btns-preview:hover .button-primary:not(.recording), .buttons:hover .button-primary:not(.recording),
 .button-primary:hover:not(.recording),
 .active {
     background-color: #E6BBE2;
     outline: 1px dotted #110038;
     outline-offset: -4px;
+}
+
+a#btns-preview:hover .button-primary {
+    background-color: #FF6161;
 }
 
 .busqueda .active {
@@ -643,8 +647,46 @@ nav>div {
     background-color: #FFF4FD;
 }
 
-.cancel:hover{
-    background-color: #e7e7e7;
+.button-primary.cancel:hover {
+    background: #F0E5EE;
+}
+
+.time {
+    display: flex;
+    margin-right: 75px;
+    align-items: center;
+}
+
+#button-arrow{
+    background: #F7C9F3;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    background-image: url(/assets/dropdown.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: rotate(270deg);
+}
+
+.progress-bar {
+    width: 240px;
+    height: 24px;
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #FFFCFC, inset 2px 2px 0 0 #000000;
+    margin-top: 2px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bar {
+    height: 20px;
+    flex-wrap: initial;
+    margin-top: 2px;
+    align-content: center;
+    width: 12px;
+    background: #999
 }
 
 .camera{
@@ -654,16 +696,6 @@ nav>div {
     object-fit: cover;
     margin: 11px;
     height: 400px;  
-}
-
-video {
-    width: 99.6%;
-    clip-path: inset(0.4% 0% 17.5% 0.4%);
-    background: #fff;
-    border: 1px solid #979797;
-    box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
-    object-fit: cover;
-    height: fit-content;
 }
 
 .video .buttons {
@@ -714,19 +746,55 @@ a#btns-preview {
     color: white;
 }
 
-.video .recording#button3 {
+.video .recording#button3, .video.night .recording#button3  {
 
     background-image: url(./assets/recording.svg);
 }
 
 .video .preview {
-    width: 725px;
-    clip-path: inset(0.4% 0% 17.5% 0.4%);
+    width: 99.6%;
+    clip-path: inset(0.4% 0% 1% 0.4%);
+    background: #fff;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    object-fit: cover;
+    height: inherit;
 }
 
 .video .btn2{
     display: flex;
     justify-content: space-between;
+}
+
+.bar.chargedBar {
+    background-color: #F7C9F3;
+}
+
+.modal-bar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 108px;
+}
+
+.modal-bar img{
+    margin-bottom: 8px;
+}
+
+.modal-bar{
+    font-family: 'Chakra Petch';
+    font-size: 16px;
+    font-weight: bold;
+    color: #110038;
+}
+
+.modal-bar p{
+    margin-bottom: 40px;
+    
+}
+
+.progress-bar#uploadProgressBar{
+    width: 324px;
 }
 
 /*TEMA NIGHT*/
@@ -824,7 +892,7 @@ a#btns-preview {
     box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
 }
 
-.night .buttons:hover .button-primary:not(.recording),
+.night a#btns-preview:hover .button-primary:not(.recording), .night .buttons:hover .button-primary:not(.recording),
 .night .button-primary:hover:not(.recording),
 .night .active {
     background-color: #CE36DB;
@@ -863,16 +931,37 @@ a#btns-preview {
 }
 
 .night .cancel{
-    background-color: #919191;
+    background: #110038;
+    border: 1px solid #B4B4B4;
+    box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
 }
 
-.night .cancel:hover{
-    background-color: #6c6c6c;
+
+.night .button-primary.cancel:hover{
+    background-color: #110038;
+    outline: 1px dotted #FFFFFF;
+    outline-offset: -4px;
 }
 
 .video.night div#button3 {
     background-image: url(./assets/camera_light.svg);
 
+}
+
+.night .video .bar {
+    background-color: #EE3EFE;
+}
+
+.night #button-arrow {
+    background-color: #EE3EFE;
+    background-image: url(/assets/dropdown.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: rotate(270deg);
+}
+
+.night .bar.chargedBar {
+    background-color: #EE3EFE;
 }
 
 .hidden {
