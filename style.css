@@ -87,14 +87,14 @@ nav>div {
     border: 1px solid #110038;
     box-shadow: inset -1.5px -1.5px 0 0 #997D97, inset 1.5px 1.5px 0 0 #FFFFFF;
     font-family: 'Chakra Petch', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 15px;
     color: #110038;
     letter-spacing: 0;
     text-align: center;
     line-height: 18px;
     height: 26px;
-    padding: 6px 26px 0 26px;
+    padding: 8px 26px 0 26px;
     cursor: pointer;
 
 
@@ -103,7 +103,7 @@ nav>div {
 .buttons .button-primary:nth-last-of-type(1) {
     margin-left: 0px;
     margin-right: 16px;
-    padding: 6px 15px 0 15px;
+    padding: 6px 15px 2px 21px;
     background-image: url(/assets/dropdown.svg);
     background-repeat: no-repeat;
     background-position: center center;
@@ -580,7 +580,7 @@ a#btns-preview:hover .button-primary {
     margin-right: 13%;
 }
 
-.text h3 {
+h3 {
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
     font-size: 16px;
@@ -643,11 +643,11 @@ a#btns-preview:hover .button-primary {
     margin-right: 13px;
 }
 
-.cancel{
+.white{
     background-color: #FFF4FD;
 }
 
-.button-primary.cancel:hover {
+.button-primary.white:hover {
     background: #F0E5EE;
 }
 
@@ -797,6 +797,82 @@ a#btns-preview {
     width: 324px;
 }
 
+.camera #timeInfo {
+    font-size: 12px;
+    font-weight: 600;
+    color: #110038a3;
+    margin-top: 6px;
+}
+
+.camera span{
+    text-decoration: line-through;
+}
+
+.content-modal {
+    display: flex;
+    margin-top: 22px;
+}
+
+div#modal3 {
+    width: 62%;
+    height: 380px;
+}
+
+#modal3 .camera {
+    margin: 6px 0 0 24px;
+    height: 194px;
+    width: 46%;
+}
+
+.info-buttons {
+    width: 300px;
+    padding: 20px;
+}
+
+.info-buttons h3{
+    margin-top: 20px;
+}
+
+.info-buttons div {
+    margin-top: 16px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    height: 34px;
+}
+
+.info-buttons div a{
+    object-fit: contain;
+    display: block;
+    padding: 8px;
+    color: #110038;
+}
+
+.button-primary#ok{
+    width: 130px;
+    float: right;
+    margin-top: 47%;
+    line-height: 2;
+}
+
+.modal{
+        width: auto;
+    position: absolute;
+    height: 20px;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    text-align: center;
+    padding: 5px 18px;
+    top: 0;
+    left: 45%;
+    right: 40%;
+    bottom: 0;
+    margin: auto;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 13px;
+    color: #110038;
+}
+
 /*TEMA NIGHT*/
 
 .night {
@@ -930,14 +1006,14 @@ a#btns-preview {
     color: #110038;
 }
 
-.night .cancel{
+.night .white{
     background: #110038;
     border: 1px solid #B4B4B4;
     box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
 }
 
 
-.night .button-primary.cancel:hover{
+.night .button-primary.white:hover{
     background-color: #110038;
     outline: 1px dotted #FFFFFF;
     outline-offset: -4px;
@@ -962,6 +1038,10 @@ a#btns-preview {
 
 .night .bar.chargedBar {
     background-color: #EE3EFE;
+}
+
+.night .info-buttons div a {
+    color: #FFFFFF;
 }
 
 .hidden {

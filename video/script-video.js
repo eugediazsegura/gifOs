@@ -1,9 +1,14 @@
+const token = '?api_key=AHbdJlM0sAYa8PSQkZ7MHF4AE6OaePBE';
+const urlUpload = 'https://upload.giphy.com/v1/gifs';
+const url = 'https://api.giphy.com/v1/gifs/';
 const logovideo = document.querySelector(".video #logo");
 const bodyvideo = document.querySelector('body.video');
 const arrow = document.querySelector('span.logo');
 const start = document.querySelector('#start');
 const modal1 = document.querySelector('#modal1');
 const modal2 = document.querySelector('#modal2');
+const modal3 = document.querySelector('#modal3');
+const modalProgressBar = document.querySelector(".modal-bar");
 const btnsUpload = document.querySelector("#btns-upload");
 const video = document.querySelector('video');
 const capturar = document.querySelector('#button4');
@@ -11,8 +16,10 @@ const capturar2 = document.querySelector('#button3');
 const mygifPreview = document.querySelector("#gif-preview");
 const counter = document.querySelector(".counter");
 const btnreupload = document.querySelector("#reupload");
-const btnUpload = document.querySelector("#upload")
-const time = document.querySelector(".time")
+const btnUpload = document.querySelector("#upload");
+const time = document.querySelector(".time");
+const copy = document.querySelector("#copy")
+
 
 let recorder;
 let recording = false;
@@ -129,88 +136,53 @@ function stopRecordingCall() {
     let form = new FormData();
 
     form.append('file', recorder.getBlob(), 'test.gif');
-    console.log(form.get('file'));
 
-    //este es el boton de cargar gif
-    //upload.addEventListener('click', () =>{
-    //css uploarmessage.classlist.remove(hidden);
-    //preview.classlist.add(hidden);
-    // uploadGif(form);
-    //  })
+        btnUpload.addEventListener("click", () => {
+            uploading = true;
+            const uploadProgressBar = document.querySelector("#uploadProgressBar");
+            mygifPreview.classList.add("hidden");
+            modalProgressBar.classList.remove("hidden");
+            counter.style.visibility = "hidden"
+            time.classList.add("hidden");
+            btnUpload.classList.add("hidden");
+            btnreupload.innerHTML = "Cancelar"
+            createProgressBarUploading();
+            uploadGif(form);
+    
+        })
 
     //obtener el blob de la variable recorder, que actualmente tiene el gif almacenado
     objectURL = URL.createObjectURL(recorder.getBlob());
-    console.log(objectURL);
+
     document.querySelector(".video .topBar .font14").innerHTML = "Vista Previa"
     video.classList.add("hidden");
     mygifPreview.classList.remove("hidden")
+    
     mygifPreview.src = objectURL
+   
     document.querySelector("a#btns-preview").style.display = "none";
     btnsUpload.classList.remove("hidden");
     time.classList.remove("hidden")
-    createProgressBar();
-
-
-    btnUpload.addEventListener("click", () => {
-        uploading = true;
-        const modalProgressBar = document.querySelector(".modal-bar");
-        const uploadProgressBar = document.querySelector("#uploadProgressBar");
-        mygifPreview.classList.add("hidden");
-        modalProgressBar.classList.remove("hidden");
-
-        let bar = [];
-
-        for (let i = 1; i <= 23; i++) {
-            bar[i] = document.createElement("div");
-            bar[i].className = "bar";
-            uploadProgressBar.appendChild(bar[i]);
-            setTimeout(() => {
-                //bar[i].classList.toggle("chargedBar");
-                changeBarColor(bar, i)
-            }, (i * 100));
-
-
-        }
-
-        function changeBarColor(bar, i) {
-            bar[i].classList.toggle("chargedBar");
-            if (i == 23 && uploading) {
-                for (let j = 1; j <= 23; j++) {
-
-                    setTimeout(() => {
-                        changeBarColor(bar, j)
-                    }, (j * 100))
-                }
-            }
-
-        }
-        /* let i= 1;
-        function cFor(i){
-            if(i<=23){
-                bar = document.createElement("div");
-                bar.className = "bar";
-                uploadProgressBar.appendChild(bar);
-            }
-        } */
-
-
-    })
+   
+    createProgressBarTime();
+    recorder.destroy();
+    recoder = null;
 }
 
+/*calcula el tiempo del gif*/
 let getValueProgressbar = () => {
     let finalSeconds = parseInt(counter.innerText.slice(-2));
     let finalMinutes = (parseInt(counter.innerText.slice(6, 8))) * 60;
     let finalTime = finalSeconds + finalMinutes
 
-    /*en esta variable se realiza una regla de 3,los segundos por cantidad de barras  y este resultado dividido
+    /*en esta variable se realiza una regla de 3,los segundos por cantidad de barras y este resultado dividido
      el "valor máximo supuesto" de segundos del gif, 2 minutos */
     let total = Math.ceil((finalTime * 17) / 120)
 
     return total
 }
 
-
-function createProgressBar() {
+function createProgressBarTime() {
 
     let progress = document.querySelector("#timeProgressBar")
 
@@ -227,3 +199,101 @@ function createProgressBar() {
 
     }
 }
+
+
+function createProgressBarUploading() {
+    let bar = [];
+
+        for (let i = 1; i <= 23; i++) {
+            bar[i] = document.createElement("div");
+            bar[i].className = "bar";
+            uploadProgressBar.appendChild(bar[i]);
+            setTimeout(() => {
+                //bar[i].classList.toggle("chargedBar");
+                changeBarColor(bar, i)
+            }, (i * 100));
+
+
+        }
+
+        
+    }
+    
+    function changeBarColor(bar, i) {
+        bar[i].classList.toggle("chargedBar");
+        if (i == 23 && uploading) {
+            for (let j = 1; j <= 23; j++) {
+
+                setTimeout(() => {
+                    changeBarColor(bar, j)
+                }, (j * 100))
+            }
+        }
+
+    }
+
+    function uploadGif(gif) {
+        fetch( urlUpload + token, {
+            method: 'POST', 
+            body: gif,
+        }).then(res => {
+            if (res.status != 200 ) {
+                let uploading = false;
+                modalProgressBar.innerHTML ="<h3>Hubo un error subiendo tu Guifo</h3>"
+                console.error("Error status: " + res.status)
+            }
+            return res.json()
+        }).then( data => {
+            console.log(data)
+            modal2.style.display ="none";
+            modal3.classList.remove("hidden");
+            let gifId = data.data.id;
+            getGifDetails(gifId)
+        })
+        .catch(error => {
+            modalProgressBar.innerHTML ="<h3>Hubo un error subiendo tu Guifo</h3>"
+            console.error("Error: " + error)
+        })
+        
+    }
+
+    function getGifDetails(id) {
+        fetch(url + id + token)
+        
+        .then((res) => {
+            return res.json()
+        }).then(data => {
+            let gifURL = data.data.url;
+            localStorage.setItem('gif' + data.data.id, JSON.stringify(data));
+            document.querySelector("div#modal3 .camera img").src = data.data.images.fixed_height.url;
+            const copyModal = document.querySelector(".modal")
+            document.querySelector("#download").href =  mygifPreview.src
+            
+            copy.addEventListener("click", async () => {
+                await navigator.clipboard.writeText(gifURL);
+                copyModal.innerHTML = "Link copiado con éxito!"
+                copyModal.classList.remove("hidden");
+                setTimeout(() => {
+                copyModal.classList.add("hidden")
+            }, 1500);
+            })
+            document.getElementById("ok").addEventListener("click", () => {
+                location.reload();
+            })
+            
+        })
+        .catch((error) => {
+            return error;
+        })  
+    }
+
+    function getGifs() {
+        let gifs = []
+        for (let i = 0; i < localStorage.length; i++) {
+            const gif = localStorage.getItem(localStorage.key[i]);
+            gifJSON = JSON.parse(gif)
+            gifs.push(gifJSON.data.images.fixed_height.url)
+            
+        }
+        
+    }
