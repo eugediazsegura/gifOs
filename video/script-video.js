@@ -42,7 +42,7 @@ window.addEventListener("load", () => {
     } 
     if (localStorage.getItem('night') == "true") {
         bodyvideo.classList.add("night");
-        logovideo.setAttribute("src", "../assets/gifOF_logo_dark.png");
+        logovideo.setAttribute("src", "./assets/gifOF_logo_dark.png");
     }
 
 })
