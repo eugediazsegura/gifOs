@@ -11,7 +11,13 @@ const dropdown = document.querySelector('.dropdown');
 window.addEventListener("load", () => {
     if (localStorage.getItem('night') == "true") {
         body.classList.add("night");
-        logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
+        if (window.location.search =="?misGuifos" || window.location.search =="?crearGuifo") {
+            logo.setAttribute("src", "../assets/gifOF_logo_dark.png");   
+        }else {
+            
+            logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
+        }
+        
     }
 
 })
@@ -29,14 +35,14 @@ document.addEventListener("scroll", () => {
 
 sailorNight.addEventListener("click", () => {
     body.classList.add("night");
-    logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
+    logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
     localStorage.setItem('night', true)
 })
 
 sailorDay.addEventListener("click", () => {
 
     body.classList.remove("night");
-    logo.setAttribute("src", "./assets/gifOF_logo.png");
+    logo.setAttribute("src", "../assets/gifOF_logo.png");
     localStorage.setItem('night', false)
 })
 
