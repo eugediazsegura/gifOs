@@ -98,9 +98,7 @@ let getSearch = async (query) => {
         const getSearchApi = url + search + token + q + query + limit + '31' + '&offset=0' + rating
         let resultsSearch = await fetch(getSearchApi);
         let resultsSearchJson = await resultsSearch.json();
-        console.log("entro")
         if (resultsSearchJson.meta.status == 200 && resultsSearchJson.data.length != 0) {
-            console.log("entro")
             let imagenesSearch = resultsSearchJson.data;
 
             for (const imagenSearch of imagenesSearch) {
@@ -126,7 +124,6 @@ let getSearch = async (query) => {
 let getAutocomplete = async (query) => {
     let autocompleteURIs = [];
     const getAutocompleteApi = url + search + "/tags" + token + q + query + limit + '3' + '&offset=0'
-    console.log(getAutocompleteApi)
     let resultsAutocomplete = await fetch(getAutocompleteApi);
     let autocompleteJson = await resultsAutocomplete.json();
     let tags = autocompleteJson.data;
@@ -161,7 +158,6 @@ inputSearch.addEventListener("keypress", () => {
                 let li = document.createElement("li");
                 autocompeteUl.appendChild(li);
                 li.innerHTML = tag;
-                console.log(tags)
                 li.addEventListener("click", () => {
                     addClassToButton();
                     buttonSearch.classList.add("active")
