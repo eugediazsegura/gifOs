@@ -36,7 +36,7 @@ sailorNight.addEventListener("click", () => {
 sailorDay.addEventListener("click", () => {
 
     body.classList.remove("night");
-    logo.setAttribute("src", "../assets/gifOF_logo.png");
+    logo.setAttribute("src", "./assets/gifOF_logo.png");
     localStorage.setItem('night', false)
 })
 
