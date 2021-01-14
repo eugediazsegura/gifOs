@@ -35,7 +35,7 @@ document.addEventListener("scroll", () => {
 
 sailorNight.addEventListener("click", () => {
     body.classList.add("night");
-    if (window.location.pathname.includes(includes('crearGuifo') || window.location.pathname.includes('misGuifos')) {
+    if (window.location.pathname.includes('crearGuifo') || window.location.pathname.includes('misGuifos')) {
         logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
     }else{
         logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
