@@ -37,6 +37,11 @@ window.addEventListener("load", () => {
         
     }else if (window.location.search =="?misGuifos") {
         menu.classList.remove("hidden");
+        if (localStorage.getItem('night') == "true") {
+            logovideo.setAttribute("src", "../assets/gifOF_logo_dark.png"); 
+        }else{
+            logovideo.setAttribute("src", "../assets/gifOF_logo.png");
+        }
         
         
     } 
