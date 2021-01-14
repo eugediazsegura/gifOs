@@ -279,36 +279,6 @@ function addTrendingGif(gifs) {
         let search = (title.indexOf("GIF")) - 1
         let string = title.substr(0, search)
         let tagsBar = string.split(" ")
-        /* img.addEventListener("mouseenter", () => {
-            div.classList.remove("trend-gif")
-            div.classList.add("suggestions", "box")
-            let div2 = document.createElement("div")
-            let divBar = document.createElement("div")
-            div.appendChild(div2)
-            div2.classList.add("gif", "hover")
-            divBar.classList.add("topBar", "hover")
-            let title = gifs[i].title
-            let search = (title.indexOf("GIF")) - 1
-            let string = title.substr(0, search)
-            let tagsBar = string.split(" ")
-
-            tagsBar.forEach(element => {
-                element = "#" + element
-                let span = document.createElement("span")
-                span.innerText = element
-                divBar.appendChild(span)
-            });
-
-            div2.appendChild(img)
-            div2.appendChild(divBar)
-        })
-        img.addEventListener("mouseleave", () => {
-            div.querySelector(".hover").remove()
-
-            div.classList.remove("suggestions", "box")
-            div.classList.add("trend-gif")
-            div.appendChild(img)
-        }) */
         agregarTags(div, img, tagsBar)
         trendGif.append(div)
     }
@@ -406,7 +376,7 @@ function ejecutarBusqueda(inputValue) {
 }
 
 function agregarTags(div, img,tagsBar){
-    img.addEventListener("mouseenter", () => {
+    img.parentElement.addEventListener("mouseenter", () => {
         div.classList.remove("trend-gif")
         div.classList.add("suggestions", "box")
         let div2 = document.createElement("div")
@@ -414,19 +384,19 @@ function agregarTags(div, img,tagsBar){
         div.appendChild(div2)
         div2.classList.add("gif", "hover")
         divBar.classList.add("topBar", "hover")
-
-
+        
         tagsBar.forEach(element => {
             element = "#" + element
             let span = document.createElement("span")
             span.innerText = element
             divBar.appendChild(span)
         });
-
+console.log(img.parentElement)
         div2.appendChild(img)
         div2.appendChild(divBar)
     })
-    img.addEventListener("mouseleave", () => {
+
+    img.parentElement.addEventListener("mouseleave", () => {
         div.querySelector(".hover").remove()
 
         div.classList.remove("suggestions", "box")
