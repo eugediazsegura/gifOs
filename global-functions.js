@@ -35,10 +35,10 @@ document.addEventListener("scroll", () => {
 
 sailorNight.addEventListener("click", () => {
     body.classList.add("night");
-    if (window.location.pathname.includes('index')) {
-        logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
-    }else{
+    if (window.location.pathname.includes(includes('crearGuifo') || window.location.pathname.includes('misGuifos')) {
         logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
+    }else{
+        logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
     }
     localStorage.setItem('night', true)
 })
@@ -46,10 +46,10 @@ sailorNight.addEventListener("click", () => {
 sailorDay.addEventListener("click", () => {
 
     body.classList.remove("night");
-    if (window.location.pathname.includes('index')) {
-        logo.setAttribute("src", "./assets/gifOF_logo.png");
-    }else{
+    if (window.location.pathname.includes('crearGuifo') || window.location.pathname.includes('misGuifos')) {
         logo.setAttribute("src", "../assets/gifOF_logo.png");
+    }else{
+        logo.setAttribute("src", "./assets/gifOF_logo.png");
     }
     localStorage.setItem('night', false)
 })
