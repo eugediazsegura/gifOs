@@ -4,6 +4,8 @@ const url = 'https://api.giphy.com/v1/gifs/';
 const logovideo = document.querySelector(".video #logo");
 const bodyvideo = document.querySelector('body.video');
 const arrow = document.querySelector('span.logo');
+const menu = document.querySelector(".menu");
+const nav = document.querySelector("nav")
 const start = document.querySelector('#start');
 const modal1 = document.querySelector('#modal1');
 const modal2 = document.querySelector('#modal2');
@@ -11,37 +13,52 @@ const modal3 = document.querySelector('#modal3');
 const modalProgressBar = document.querySelector(".modal-bar");
 const btnsUpload = document.querySelector("#btns-upload");
 const video = document.querySelector('video');
-const capturar = document.querySelector('#button4');
-const capturar2 = document.querySelector('#button3');
+const capturar = document.querySelector('#button-text');
+const capturar2 = document.querySelector('#button-icon');
+const cancel = document.querySelector("#cancel");
 const mygifPreview = document.querySelector("#gif-preview");
 const counter = document.querySelector(".counter");
 const btnreupload = document.querySelector("#reupload");
 const btnUpload = document.querySelector("#upload");
 const time = document.querySelector(".time");
-const copy = document.querySelector("#copy")
-
+const copy = document.querySelector("#copy");
+const myguifos = document.querySelector(".myguifos");
 
 let recorder;
 let recording = false;
 let uploading = false;
 
+window.addEventListener("load", () => {
+    if (window.location.search =="?crearGuifo") {
+        modal1.classList.remove("hidden");
+        nav.style.justifyContent = "flex-start"
+        arrow.classList.remove("hidden")
+
+        
+    }else if (window.location.search =="?misGuifos") {
+        menu.classList.remove("hidden");
+        
+        
+    } 
+    if (localStorage.getItem('night') == "true") {
+        bodyvideo.classList.add("night");
+        logovideo.setAttribute("src", "../assets/gifOF_logo_dark.png");
+    }
+
+})
+
 logo.addEventListener("click", () => {
     window.location = "../index.html"
 })
 
-arrow.addEventListener("click", () => {
+ arrow.addEventListener("click", () => {
+    window.location = "../index.html"
+}) 
+
+cancel.addEventListener("click", () => {
     window.location = "../index.html"
 })
 
-window.addEventListener("load", () => {
-    console.log("entro")
-    if (localStorage.getItem('night') == "true") {
-        bodyvideo.classList.add("night");
-        logovideo.setAttribute("src", "../assets/gifOF_logo_dark.png");
-
-    }
-
-})
 
 start.addEventListener("click", () => {
     modal1.classList.add("hidden");
@@ -51,8 +68,7 @@ start.addEventListener("click", () => {
 })
 
 btnreupload.addEventListener("click", () => {
-    console.log("entro")
-    window.location = "../video/video.html"
+    window.location = "../video/video.html?crearGuifo"
 })
 
 function getCounter() {
@@ -110,8 +126,6 @@ function getStreamAndRecord() {
                     //inicio de grabacion
                     recorder.startRecording();
 
-                    //getDuration
-                    //cambiar estilos del dom
                     document.querySelector(".video .topBar .font14").innerHTML = "Capturando Tu Guifo"
                     capturar.classList.add("recording")
                     capturar2.classList.add("recording")
@@ -169,14 +183,15 @@ function stopRecordingCall() {
     recoder = null;
 }
 
-/*calcula el tiempo del gif*/
+//calcula el tiempo del gif
 let getValueProgressbar = () => {
     let finalSeconds = parseInt(counter.innerText.slice(-2));
     let finalMinutes = (parseInt(counter.innerText.slice(6, 8))) * 60;
     let finalTime = finalSeconds + finalMinutes
 
-    /*en esta variable se realiza una regla de 3,los segundos por cantidad de barras y este resultado dividido
-     el "valor máximo supuesto" de segundos del gif, 2 minutos */
+    //en esta variable se realiza una regla de 3,los segundos por cantidad de barras y este resultado dividido
+    // el "valor máximo supuesto" de segundos del gif, 2 minutos
+
     let total = Math.ceil((finalTime * 17) / 120)
 
     return total
@@ -200,7 +215,6 @@ function createProgressBarTime() {
     }
 }
 
-
 function createProgressBarUploading() {
     let bar = [];
 
@@ -212,13 +226,8 @@ function createProgressBarUploading() {
                 //bar[i].classList.toggle("chargedBar");
                 changeBarColor(bar, i)
             }, (i * 100));
-
-
-        }
-
-        
+        }     
     }
-    
     function changeBarColor(bar, i) {
         bar[i].classList.toggle("chargedBar");
         if (i == 23 && uploading) {
@@ -244,7 +253,6 @@ function createProgressBarUploading() {
             }
             return res.json()
         }).then( data => {
-            console.log(data)
             modal2.style.display ="none";
             modal3.classList.remove("hidden");
             let gifId = data.data.id;
@@ -290,10 +298,27 @@ function createProgressBarUploading() {
     function getGifs() {
         let gifs = []
         for (let i = 0; i < localStorage.length; i++) {
-            const gif = localStorage.getItem(localStorage.key[i]);
-            gifJSON = JSON.parse(gif)
-            gifs.push(gifJSON.data.images.fixed_height.url)
+            const gif = localStorage.getItem(localStorage.key(i));
+            if(gif.includes('data')) {
+                gifJSON = JSON.parse(gif)
+                gifs.push(gifJSON.data.images.fixed_height.url)
+
+            }
             
         }
-        
+        return gifs;
     }
+    window.addEventListener("load", ()=> {
+        const gifs = getGifs()
+        for (let i = 0; i < gifs.length; i++ ) {
+            const gif = gifs[i];
+            const img = document.createElement("img");
+            img.src = gif;
+            if (i % 5 == 0) {
+                img.style.width = "48.5%";
+                img.style.objectFit = "cover"
+               
+            }
+            myguifos.appendChild(img)   
+        }  
+    })

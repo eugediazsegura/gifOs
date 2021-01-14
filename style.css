@@ -394,12 +394,14 @@ a#btns-preview:hover .button-primary {
     justify-content: space-between;
 }
 
-.trendings .suggestions.box {
+.trendings .suggestions.box, .searchs .suggestions.box {
     width: 24%;
     height: fit-content;
     margin-left: 0px;
     margin-top: 9px;
 }
+
+
 
 /*se aplican por js*/
 
@@ -610,8 +612,7 @@ h3 {
 }
 
 .video #logo {
-    width: 95%;
-    height: auto;
+    height: fit-content;
 }
 
 .logo:before {
@@ -622,16 +623,6 @@ h3 {
     cursor: pointer;
 }
 
-.video nav{
-    justify-content: flex-start;
-}
-
-.video nav span{
-    padding-left: 40px;
-    margin-left: -40px;
-    z-index: 999;
-
-}
 
 .btn{
     display: flex;
@@ -698,20 +689,14 @@ h3 {
     height: 400px;  
 }
 
-.video .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin: 17px 0;
-}
-
-.video div#button3 {
-    padding: 6px 16px 0 16px;
+.video div#button-icon {
+    padding: 6px 18px 0 18px;
     background-image: url(./assets/camera.svg);
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.video div#button4 {
+.video div#button-text {
     background-image: none;
     padding: 6px 28px 0 28px;
     min-width: 62px;
@@ -744,9 +729,10 @@ a#btns-preview {
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
     color: white;
+    
 }
 
-.video .recording#button3, .video.night .recording#button3  {
+.video .recording#button-icon, .video.night .recording#button-icon  {
 
     background-image: url(./assets/recording.svg);
 }
@@ -872,6 +858,22 @@ div#modal3 {
     font-size: 13px;
     color: #110038;
 }
+
+.myguifos {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.myguifos img {
+    padding-left: 0px;
+    width: 23.6%;
+    margin-bottom: 22px;
+    height: 233px;
+    object-fit: revert;
+    margin-right: 16px;
+}
+
 
 /*TEMA NIGHT*/
 
@@ -1019,7 +1021,7 @@ div#modal3 {
     outline-offset: -4px;
 }
 
-.video.night div#button3 {
+.video.night div#button-icon {
     background-image: url(./assets/camera_light.svg);
 
 }
