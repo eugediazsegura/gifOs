@@ -391,7 +391,6 @@ function agregarTags(div, img,tagsBar){
             span.innerText = element
             divBar.appendChild(span)
         });
-console.log(img.parentElement)
         div2.appendChild(img)
         div2.appendChild(divBar)
     })
