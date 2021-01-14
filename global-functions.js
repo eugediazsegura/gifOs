@@ -11,10 +11,10 @@ const dropdown = document.querySelector('.dropdown');
 window.addEventListener("load", () => {
     if (localStorage.getItem('night') == "true") {
         body.classList.add("night");
-        if (window.location.pathname.includes('index')) {
-            logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
-        }else{
+        if (window.location.pathname.includes('crearGuifo') || window.location.pathname.includes('misGuifos')) {
             logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
+        }else{
+            logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
         }
         
         
