@@ -11,7 +11,7 @@ const dropdown = document.querySelector('.dropdown');
 window.addEventListener("load", () => {
     if (localStorage.getItem('night') == "true") {
         body.classList.add("night");
-        logo.setAttribute("src", "assets/gifOF_logo_dark.png");
+        logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
     }
 
 })
@@ -29,7 +29,7 @@ document.addEventListener("scroll", () => {
 
 sailorNight.addEventListener("click", () => {
     body.classList.add("night");
-    logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
+    logo.setAttribute("src", "./assets/gifOF_logo_dark.png");
     localStorage.setItem('night', true)
 })
 

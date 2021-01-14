@@ -33,13 +33,13 @@ window.addEventListener("load", () => {
 
 sailorNight.addEventListener("click", () => {
     if (buttonSearch.classList.contains('active')) {
-        lupa.style.backgroundImage = 'url(../assets/lupa_light.svg)'
+        lupa.style.backgroundImage = 'url(./assets/lupa_light.svg)'
     }
 })
 
 sailorDay.addEventListener("click", () => {
     if (buttonSearch.classList.contains('active')) {
-        lupa.style.backgroundImage = 'url(../assets/lupa.svg)'
+        lupa.style.backgroundImage = 'url(./assets/lupa.svg)'
     }
 })
 
@@ -325,12 +325,12 @@ function limpiarBusqueda() {
 }
 
 function addClassToButton() {
-    if (localStorage.getItem('night') == "false") {
-        buttonSearch.classList.add("submit-imput")
-        lupa.style.backgroundImage = 'url(/assets/lupa.svg)'
-    } else if (localStorage.getItem('night') == "true") {
+    if (localStorage.getItem('night') == "true") {
         buttonSearch.classList.add("nightSubmit-input")
-        lupa.style.backgroundImage = 'url(/assets/lupa_light.svg)'
+        lupa.style.backgroundImage = 'url(./assets/lupa_light.svg)'
+    } else{
+        buttonSearch.classList.add("submit-imput")
+        lupa.style.backgroundImage = 'url(./assets/lupa.svg)'
     }
 }
 
