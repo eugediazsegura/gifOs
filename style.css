@@ -104,7 +104,7 @@ nav>div {
     margin-left: 0px;
     margin-right: 16px;
     padding: 6px 15px 2px 21px;
-    background-image: url(/assets/dropdown.svg);
+    background-image: url(./assets/dropdown.svg);
     background-repeat: no-repeat;
     background-position: center center;
     border-left: 0px;
@@ -280,11 +280,11 @@ a#btns-preview:hover .button-primary {
 }
 
 .busqueda .active .lupa {
-    background-image:  url(/assets/lupa.svg);
+    background-image:  url(./assets/lupa.svg);
 } 
 
 .night.busqueda .active .lupa{
-    background-image: url(/assets/lupa_light.svg);
+    background-image: url(./assets/lupa_light.svg);
 }
 
 .night.busqueda .active{
@@ -292,7 +292,7 @@ a#btns-preview:hover .button-primary {
 }
 
 .lupa {
-    background-image: url(/assets/lupa_inactive.svg);
+    background-image: url(./assets/lupa_inactive.svg);
     background-repeat: no-repeat;
     background-position: center center;
     height: 20px;
@@ -302,7 +302,7 @@ a#btns-preview:hover .button-primary {
 }
 
 .lupa-input {
-    background-image: url(/assets/lupa.svg);
+    background-image: url(./assets/lupa.svg);
 }
 
 .subtitle {
@@ -616,7 +616,7 @@ h3 {
 }
 
 .logo:before {
-    content: url(../assets/arrow.svg);
+    content: url(./assets/arrow.svg);
     position: absolute;
     margin-left: -40px;
     margin-top: 10px;
@@ -655,7 +655,7 @@ h3 {
     width: 20px;
     height: 20px;
     margin-right: 3px;
-    background-image: url(/assets/dropdown.svg);
+    background-image: url(./assets/dropdown.svg);
     background-repeat: no-repeat;
     background-position: center center;
     transform: rotate(270deg);
@@ -894,7 +894,7 @@ div#modal3 {
 }
 
 .night .buttons .button-primary:last-child {
-    background-image: url(/assets/dropdownnight.svg);
+    background-image: url(./assets/dropdownnight.svg);
 }
 
 .night .myGifos {
@@ -977,11 +977,11 @@ div#modal3 {
 }
 
 .night .lupa {
-    background-image: url(/assets/Combined-Shape.svg);
+    background-image: url(./assets/Combined-Shape.svg);
 }
 
 .night .lupa-input {
-    background-image: url(/assets/lupa_light.svg);
+    background-image: url(./assets/lupa_light.svg);
 }
 
 .night .subtitle {
@@ -1032,7 +1032,7 @@ div#modal3 {
 
 .night #button-arrow {
     background-color: #EE3EFE;
-    background-image: url(/assets/dropdown.svg);
+    background-image: url(./assets/dropdown.svg);
     background-repeat: no-repeat;
     background-position: center center;
     transform: rotate(270deg);
