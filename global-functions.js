@@ -46,7 +46,7 @@ sailorNight.addEventListener("click", () => {
 sailorDay.addEventListener("click", () => {
 
     body.classList.remove("night");
-    if (window.location.pathname.includes('crearGuifo') || window.location.pathname.includes('misGuifos')) {
+    if (window.location.pathname.includes('video')) {
         logo.setAttribute("src", "../assets/gifOF_logo.png");
     }else{
         logo.setAttribute("src", "./assets/gifOF_logo.png");
